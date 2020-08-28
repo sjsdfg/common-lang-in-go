@@ -90,3 +90,15 @@ func EqualsAnyIgnoreCase(str string, list ...string) bool {
 	}
 	return false
 }
+
+func IsDigital(str string) bool {
+	if IsBlank(str) {
+		return false
+	}
+	for _, s := range str {
+		if !unicode.IsDigit(s) {
+			return false
+		}
+	}
+	return true
+}
