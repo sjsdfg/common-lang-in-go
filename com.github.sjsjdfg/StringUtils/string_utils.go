@@ -15,14 +15,9 @@ func IsNotEmpty(str string) bool {
 
 func IsNotBlank(str string) bool {
 	if IsEmpty(str) {
-		return true
+		return false
 	}
-	for _, c := range str {
-		if unicode.IsSpace(c) {
-			return false
-		}
-	}
-	return true
+	return IsNotEmpty(strings.TrimSpace(str))
 }
 
 func IsBlank(str string) bool {
@@ -108,4 +103,11 @@ func DefaultIfEmpty(str, defaultStr string) string {
 		return str
 	}
 	return defaultStr
+}
+
+func ReturnByCondition(condition bool, ifTrue, ifFalse string) string {
+	if condition {
+		return ifTrue
+	}
+	return ifFalse
 }
