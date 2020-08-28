@@ -1,0 +1,3 @@
+package StringUtils
+
+const Empty = ""
