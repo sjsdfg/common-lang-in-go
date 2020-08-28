@@ -102,3 +102,10 @@ func IsDigital(str string) bool {
 	}
 	return true
 }
+
+func DefaultIfEmpty(str, defaultStr string) string {
+	if IsNotEmpty(str) {
+		return str
+	}
+	return defaultStr
+}
