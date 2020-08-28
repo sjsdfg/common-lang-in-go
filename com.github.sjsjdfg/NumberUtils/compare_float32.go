@@ -1,6 +1,6 @@
-package CompareUtils
+package NumberUtils
 
-func MaxInt(list ...int) int {
+func MaxFloat32(list ...float32) float32 {
 	if len(list) <= 0 {
 		return 0
 	}
@@ -13,7 +13,7 @@ func MaxInt(list ...int) int {
 	return max
 }
 
-func MinInt(list ...int) int {
+func MinFloat32(list ...float32) float32 {
 	if len(list) <= 0 {
 		return 0
 	}
