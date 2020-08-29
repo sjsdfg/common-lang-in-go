@@ -8,8 +8,9 @@ const (
 )
 
 const (
-	NanosPerSeconds int64 = 1e6
-	NanosPerMinute  int64 = MillsPerMinute * NanosPerSeconds
-	NanosPerHour    int64 = MillsPerHour * NanosPerSeconds
+	NanosPerMills   int64 = 1e6
+	NanosPerSeconds int64 = MillsPerSeconds * NanosPerMills
+	NanosPerMinute  int64 = MillsPerMinute * NanosPerMills
+	NanosPerHour    int64 = MillsPerHour * NanosPerMills
 	NanosPerDay     int64 = MillsPerDay * MillsPerDay
 )
