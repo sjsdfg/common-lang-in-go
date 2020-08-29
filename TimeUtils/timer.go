@@ -18,11 +18,11 @@ func (t Timer) GetDurationInSeconds() int64 {
 }
 
 func (t Timer) GetDurationInMills() int64 {
-	return t.GetDurationInSeconds() * DateUtils.MillsPerSeconds
+	return t.GetDurationInNanos() / DateUtils.NanosPerMills
 }
 
 func (t Timer) GetDurationInNanos() int64 {
-	return t.GetDurationInMills() * DateUtils.NanosPerMills
+	return time.Now().UnixNano() - t.startTime.UnixNano()
 }
 
 func (t Timer) Reset() {
