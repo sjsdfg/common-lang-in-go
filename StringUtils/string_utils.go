@@ -99,13 +99,10 @@ func IsDigital(str string) bool {
 }
 
 func DefaultIfEmpty(str, defaultStr string) string {
-	if IsNotEmpty(str) {
-		return str
-	}
-	return defaultStr
+	return Condition(IsNotEmpty(str), str, defaultStr)
 }
 
-func ReturnByCondition(condition bool, ifTrue, ifFalse string) string {
+func Condition(condition bool, ifTrue, ifFalse string) string {
 	if condition {
 		return ifTrue
 	}
