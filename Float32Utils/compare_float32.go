@@ -1,6 +1,6 @@
-package NumberUtils
+package Float32Utils
 
-func MaxFloat64(list ...float64) float64 {
+func Max(list ...float32) float32 {
 	if len(list) <= 0 {
 		return 0
 	}
@@ -13,7 +13,7 @@ func MaxFloat64(list ...float64) float64 {
 	return max
 }
 
-func MinFloat64(list ...float64) float64 {
+func Min(list ...float32) float32 {
 	if len(list) <= 0 {
 		return 0
 	}
@@ -24,4 +24,11 @@ func MinFloat64(list ...float64) float64 {
 		}
 	}
 	return min
+}
+
+func Condition(condition bool, ifTrue, ifFalse float32) float32 {
+	if condition {
+		return ifTrue
+	}
+	return ifFalse
 }

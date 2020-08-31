@@ -18,7 +18,7 @@ func (t Timer) GetDurationInSeconds() int64 {
 }
 
 func (t Timer) GetDurationInMills() int64 {
-	return t.GetDurationInNanos() / DateUtils.NanosPerMills
+	return t.GetDurationInNanos() / DateUtils.NsPerMill
 }
 
 func (t Timer) GetDurationInNanos() int64 {
