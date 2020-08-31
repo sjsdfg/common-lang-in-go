@@ -10,7 +10,7 @@ func IsEmpty(str string) bool {
 }
 
 func IsNotEmpty(str string) bool {
-	return !IsNotEmpty(str)
+	return !IsEmpty(str)
 }
 
 func IsNotBlank(str string) bool {
