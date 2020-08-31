@@ -6,9 +6,9 @@ import (
 )
 
 func GetCurrentMills() int64 {
-	return time.Now().Unix() * DateUtils.MillsPerSeconds
+	return time.Now().Unix() * DateUtils.MillsPerSecond
 }
 
 func GetMills(time time.Time) int64 {
-	return time.Unix() * DateUtils.MillsPerSeconds
+	return time.Unix() * DateUtils.MillsPerSecond
 }
