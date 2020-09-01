@@ -48,6 +48,18 @@ func IsAnyEmpty(list ...string) bool {
 	return false
 }
 
+func IsAnyNoneEmpty(list ...string) bool {
+	if len(list) <= 0 {
+		return false
+	}
+	for _, s := range list {
+		if IsNotEmpty(s) {
+			return true
+		}
+	}
+	return false
+}
+
 func Equal(str1, str2 string) bool {
 	if IsAllEmpty(str1, str2) {
 		return true
