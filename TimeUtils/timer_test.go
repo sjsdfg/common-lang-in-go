@@ -11,3 +11,8 @@ func TestTimer(t *testing.T) {
 	time.Sleep(1 * time.Second)
 	assert.Equal(t, int64(1), timer.GetDurationInSeconds())
 }
+
+func TestZero(t *testing.T) {
+	assert.Equal(t, int64(0), Zero.Unix())
+	assert.Equal(t, int64(0), Zero.UnixNano())
+}

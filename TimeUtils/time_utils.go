@@ -10,5 +10,5 @@ func GetCurrentMills() int64 {
 }
 
 func GetMills(time time.Time) int64 {
-	return time.Unix() * DateUtils.MillsPerSecond
+	return time.UnixNano() / DateUtils.NsPerMill
 }

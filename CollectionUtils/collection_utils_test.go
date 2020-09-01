@@ -23,18 +23,23 @@ func TestIsEmpty(t *testing.T) {
 func TestIsEmptySpeed(t *testing.T) {
 	strings := make([]string, 0)
 	timer := TimeUtils.NewTimer()
-	for i := 0; i < 1000000; i++ {
+	retryTime := 100_000_000_000
+	for i := 0; i < retryTime; i++ {
 		if len(strings) <= 0 {
 
 		}
 	}
-	t.Logf("{len(strings) <= 0} cost %d nanos", timer.GetDurationInNanos())
+
+	nativeCost := timer.GetDurationInNanos()
+	t.Logf("{len(strings) <= 0} cost %d nanos", nativeCost)
 
 	timer.Reset()
-	for i := 0; i < 1000000; i++ {
+	for i := 0; i < retryTime; i++ {
 		if IsEmpty(strings) {
 
 		}
 	}
-	t.Logf("{IsEmpty(strings)} cost %d nanos", timer.GetDurationInNanos())
+	reflectCost := timer.GetDurationInNanos()
+	t.Logf("{IsEmpty(strings)} cost %d nanos", reflectCost)
+	t.Logf("reflectCost / nativeCost = %d", reflectCost/nativeCost)
 }
