@@ -34,3 +34,7 @@ func Condition(condition bool, ifTrue, ifFalse int) int {
 	}
 	return ifFalse
 }
+
+func Abs(a int) int {
+	return Condition(a > 0, a, -a)
+}

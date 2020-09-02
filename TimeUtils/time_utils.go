@@ -12,3 +12,29 @@ func GetCurrentMills() int64 {
 func GetMills(time time.Time) int64 {
 	return time.UnixNano() / DateUtils.NsPerMill
 }
+
+func Max(list ...time.Time) time.Time {
+	if len(list) <= 0 {
+		return Zero
+	}
+	max := list[0]
+	for _, t := range list {
+		if t.After(max) {
+			max = t
+		}
+	}
+	return max
+}
+
+func Min(list ...time.Time) time.Time {
+	if len(list) <= 0 {
+		return Zero
+	}
+	min := list[0]
+	for _, t := range list {
+		if t.Before(min) {
+			min = t
+		}
+	}
+	return min
+}

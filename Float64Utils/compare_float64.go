@@ -32,3 +32,11 @@ func Condition(condition bool, ifTrue, ifFalse float64) float64 {
 	}
 	return ifFalse
 }
+
+func Abs(a float64) float64 {
+	return Condition(a > 0, a, -a)
+}
+
+func Equal(a, b float64) bool {
+	return Abs(a-b) <= 1e-6
+}

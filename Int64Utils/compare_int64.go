@@ -32,3 +32,7 @@ func Condition(condition bool, ifTrue, ifFalse int64) int64 {
 	}
 	return ifFalse
 }
+
+func Abs(a int64) int64 {
+	return Condition(a > 0, a, -a)
+}
