@@ -38,3 +38,10 @@ func Min(list ...time.Time) time.Time {
 	}
 	return min
 }
+
+func Condition(condition bool, ifTrue, ifFalse time.Time) time.Time {
+	if condition {
+		return ifTrue
+	}
+	return ifFalse
+}
