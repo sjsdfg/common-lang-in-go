@@ -73,3 +73,15 @@ func TestDefaultIfEmpty(t *testing.T) {
 	assert.Equal(t, str, DefaultIfEmpty("", str))
 	assert.Equal(t, str, DefaultIfEmpty(str, ""))
 }
+
+func TestIsZero(t *testing.T) {
+	assert.Equal(t, true, IsZero(Empty))
+	assert.Equal(t, true, IsZero("0"))
+	assert.Equal(t, false, IsZero("2"))
+}
+
+func TestIsAllZero(t *testing.T) {
+	assert.Equal(t, true, IsAllZero("", ""))
+	assert.Equal(t, true, IsAllZero("", "0"))
+	assert.Equal(t, false, IsAllZero("", "123"))
+}
