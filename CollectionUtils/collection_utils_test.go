@@ -18,6 +18,10 @@ func TestIsEmpty(t *testing.T) {
 
 	strings = make([]string, 2)
 	assert.Equal(t, len(strings) <= 0, IsEmpty(strings))
+
+	assert.Equal(t, true, IsEmpty([]string(nil)))
+	assert.Equal(t, true, IsEmpty(nil))
+	assert.Equal(t, false, IsEmpty(2))
 }
 
 func TestIsEmptySpeed(t *testing.T) {
@@ -42,4 +46,22 @@ func TestIsEmptySpeed(t *testing.T) {
 	reflectCost := timer.GetDurationInNanos()
 	t.Logf("{IsEmpty(strings)} cost %d nanos", reflectCost)
 	t.Logf("reflectCost / nativeCost = %d", reflectCost/nativeCost)
+}
+
+func BenchmarkIsEmpty(b *testing.B) {
+	strings := make([]string, 0)
+	for i := 0; i < 1_000; i++ {
+		if IsEmpty(strings) {
+
+		}
+	}
+}
+
+func BenchmarkNativeIsEmpty(b *testing.B) {
+	strings := make([]string, 0)
+	for i := 0; i < 1_000; i++ {
+		if IsEmpty(strings) {
+
+		}
+	}
 }

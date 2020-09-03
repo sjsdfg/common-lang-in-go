@@ -3,6 +3,9 @@ package CollectionUtils
 import "reflect"
 
 func IsEmpty(collection interface{}) bool {
+	if collection == nil {
+		return true
+	}
 	value := reflect.ValueOf(collection)
 	kind := value.Type().Kind()
 	if kind == reflect.Array || kind == reflect.Slice || kind == reflect.Map {
