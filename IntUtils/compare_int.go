@@ -28,7 +28,7 @@ func Min(list ...int) int {
 	return min
 }
 
-func Condition(condition bool, ifTrue, ifFalse int) int {
+func If(condition bool, ifTrue, ifFalse int) int {
 	if condition {
 		return ifTrue
 	}
@@ -36,5 +36,5 @@ func Condition(condition bool, ifTrue, ifFalse int) int {
 }
 
 func Abs(a int) int {
-	return Condition(a > 0, a, -a)
+	return If(a > 0, a, -a)
 }

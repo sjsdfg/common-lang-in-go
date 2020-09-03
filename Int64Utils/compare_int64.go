@@ -26,7 +26,7 @@ func Min(list ...int64) int64 {
 	return min
 }
 
-func Condition(condition bool, ifTrue, ifFalse int64) int64 {
+func If(condition bool, ifTrue, ifFalse int64) int64 {
 	if condition {
 		return ifTrue
 	}
@@ -34,5 +34,5 @@ func Condition(condition bool, ifTrue, ifFalse int64) int64 {
 }
 
 func Abs(a int64) int64 {
-	return Condition(a > 0, a, -a)
+	return If(a > 0, a, -a)
 }
