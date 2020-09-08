@@ -1,4 +1,4 @@
-package StreamUtils
+package CollectionUtils
 
 import (
 	"fmt"
@@ -73,4 +73,12 @@ func BenchmarkNativeMapToStringSlice(b *testing.B) {
 	for i := 0; i < 1000; i++ {
 		NativeMapToStringSlice(students)
 	}
+}
+
+func TestMapToIntSlice(t *testing.T) {
+	students := createStudents()
+	ageSlice := MapToIntSlice(students, func(i interface{}) int {
+		return i.(*student).age
+	})
+	t.Log(ageSlice)
 }
