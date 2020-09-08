@@ -85,3 +85,10 @@ func TestIsAllZero(t *testing.T) {
 	assert.Equal(t, true, IsAllZero("", "0"))
 	assert.Equal(t, false, IsAllZero("", "123"))
 }
+
+func TestTruncate(t *testing.T) {
+	testCase := "0123456789"
+	assert.Equal(t, "012", Truncate(testCase, 0, 3))
+	assert.Equal(t, "012", Truncate(testCase, -5, 3))
+	assert.Equal(t, testCase, Truncate(testCase, -5, 20))
+}

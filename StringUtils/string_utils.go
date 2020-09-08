@@ -1,6 +1,7 @@
 package StringUtils
 
 import (
+	"github.com/sjsdfg/common-lang-in-go/IntUtils"
 	"strings"
 	"unicode"
 )
@@ -158,4 +159,14 @@ func IsAllZero(list ...string) bool {
 
 func IsAnyNoneZero(list ...string) bool {
 	return !IsAllZero(list...)
+}
+
+// string truncate [starIndex, endIndex)
+// startIndex min is zero
+// endIndex max is len(str)
+func Truncate(str string, startIndex, endIndex int) string {
+	if IsEmpty(str) {
+		return Empty
+	}
+	return str[IntUtils.Max(0, startIndex):IntUtils.Min(len(str), endIndex)]
 }
