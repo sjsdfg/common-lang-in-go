@@ -2,6 +2,7 @@ package StreamUtils
 
 import (
 	"fmt"
+	"github.com/sjsdfg/common-lang-in-go/TimeUtils"
 	"github.com/stretchr/testify/assert"
 	"math/rand"
 	"testing"
@@ -35,10 +36,16 @@ func createStudents() []*student {
 
 func TestMapToStringSlice(t *testing.T) {
 	students := createStudents()
-	strings := MapToStringSlice(students, func(i interface{}) string {
+	timer := TimeUtils.NewTimer()
+	reflectSlice := MapToStringSlice(students, func(i interface{}) string {
 		return i.(*student).name
 	})
-	assert.Equal(t, NativeMapToStringSlice(students), strings)
+	t.Logf("MapToStringSlice cost %d nanos", timer.GetDurationInNanos())
+
+	timer.Reset()
+	nativeSlice := NativeMapToStringSlice(students)
+	t.Logf("NativeMapToStringSlice cost %d nanos", timer.GetDurationInNanos())
+	assert.Equal(t, nativeSlice, reflectSlice)
 }
 
 func NativeMapToStringSlice(list []*student) []string {
