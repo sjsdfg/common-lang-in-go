@@ -15,6 +15,7 @@ go get github.com/sjsdfg/common-lang-in-go
 
 ### CollectionUtils
 
+#### CollectionUtils#IsEmpty
 ```shell script
 goos: darwin
 goarch: amd64
@@ -45,5 +46,26 @@ BenchmarkNativeIsEmpty-4   	1000000000	         0.000061 ns/op
 BenchmarkNativeIsEmpty-8   	1000000000	         0.000113 ns/op
 BenchmarkNativeIsEmpty-8   	1000000000	         0.000062 ns/op
 BenchmarkNativeIsEmpty-8   	1000000000	         0.000054 ns/op
+PASS
+```
+
+### StreamUtils
+
+#### StreamUtils#MapToStringSlice
+
+```shell script
+goos: darwin
+goarch: amd64
+pkg: github.com/sjsdfg/common-lang-in-go/StreamUtils
+BenchmarkMapToStringSlice
+BenchmarkMapToStringSlice           	1000000000	         0.000386 ns/op
+BenchmarkMapToStringSlice-2         	1000000000	         0.000362 ns/op
+BenchmarkMapToStringSlice-4         	1000000000	         0.000374 ns/op
+BenchmarkMapToStringSlice-8         	1000000000	         0.000418 ns/op
+BenchmarkNativeMapToStringSlice
+BenchmarkNativeMapToStringSlice     	1000000000	         0.000202 ns/op
+BenchmarkNativeMapToStringSlice-2   	1000000000	         0.000169 ns/op
+BenchmarkNativeMapToStringSlice-4   	1000000000	         0.000103 ns/op
+BenchmarkNativeMapToStringSlice-8   	1000000000	         0.000104 ns/op
 PASS
 ```
