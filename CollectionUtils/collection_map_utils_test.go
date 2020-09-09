@@ -77,8 +77,8 @@ func BenchmarkNativeMapToStringSlice(b *testing.B) {
 
 func TestMapToIntSlice(t *testing.T) {
 	students := createStudents()
-	ageSlice := MapToIntSlice(students, func(i interface{}) int {
-		return i.(*student).age
+	ageSlice := MapToIntSlice(students, func(i int) int {
+		return students[i].age
 	})
 	t.Log(students)
 	t.Log(ageSlice)
