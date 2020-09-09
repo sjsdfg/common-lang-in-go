@@ -154,6 +154,51 @@ func ForEach(len int, action func(i int)) {
 
 这个版本的运行效率更高。但是考虑到边界检查的安全性问题，我还是更倾向于传入 list 进来，通过反射来获取列表的长度。相关代码可查看 https://github.com/sjsdfg/common-lang-in-go/blob/faster/CollectionUtils/collection_utils.go
 
+## Float32Utils
+
+- Max(list ...float32) float32
+- Min(list ...float32) float32
+- If(condition bool, ifTrue, ifFalse float32) float32
+- Abs(a float32) float32
+- Equal(a, b float32) bool
+
+## Float64Utils
+
+- Max(list ...float64) float64
+- Min(list ...float64) float64
+- If(condition bool, ifTrue, ifFalse float64) float64
+- Abs(a float64) float64
+- Equal(a, b float64) bool
+
+## Int64Utils
+
+- Max(list ...int64) int64
+- Min(list ...int64) int64
+- If(condition bool, ifTrue, ifFalse int64) int64
+- Abs(a int64) int64
+
+## IntUtils
+
+- Max(list ...int) int
+- Min(list ...int) int
+- If(condition bool, ifTrue, ifFalse int64) int
+- Abs(a int) int
+
+## TimeUtils
+
+- Max(list ...time.Time) time.Time
+- Min(list ...time.Time) time.Time
+- If(condition bool, ifTrue, ifFalse int64) time.Time
+
+上面的 `XxxUtils` 根据类型进行抽象，提供了最大值最小值的方法。并且因为 go 语言没有提供三目表达式，提供了 `If` 方法出来。可以边写出来可读性更高的代码
+
+## 最佳实践
+
+// 待实现
+主要是想配合 IDEA 的 live template 和 Postfix completion 进行快捷键的搭配。
+
+这样可以更好的使用该库。
+
 ## Benchmark
 
 ### CollectionUtils
