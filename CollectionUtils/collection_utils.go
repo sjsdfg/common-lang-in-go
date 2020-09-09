@@ -17,3 +17,9 @@ func IsEmpty(collection interface{}) bool {
 func IsNotEmpty(collection interface{}) bool {
 	return !IsEmpty(collection)
 }
+
+func ForEach(len int, action func(i int)) {
+	for i := 0; i < len; i++ {
+		action(i)
+	}
+}

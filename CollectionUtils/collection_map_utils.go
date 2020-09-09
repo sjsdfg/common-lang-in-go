@@ -3,16 +3,12 @@ package CollectionUtils
 import "reflect"
 
 // extract string field from list
-func MapToStringSlice(list interface{}, action func(index int) string) []string {
-	if list == nil || action == nil {
+func MapToStringSlice(length int, action func(index int) string) []string {
+	if length <= 0 || action == nil {
 		return []string{}
 	}
-	value := reflect.ValueOf(list)
-	if kind := value.Type().Kind(); kind != reflect.Array && kind != reflect.Slice {
-		return []string{}
-	}
-	result := make([]string, 0, value.Len())
-	for i := 0; i < value.Len(); i++ {
+	result := make([]string, 0, length)
+	for i := 0; i < length; i++ {
 		result = append(result, action(i))
 	}
 	return result
