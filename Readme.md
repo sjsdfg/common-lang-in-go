@@ -20,48 +20,31 @@ go get github.com/sjsdfg/common-lang-in-go
 goos: darwin
 goarch: amd64
 pkg: github.com/sjsdfg/common-lang-in-go/CollectionUtils
-BenchmarkIsEmpty
-BenchmarkIsEmpty           	1000000000	         0.000074 ns/op
-BenchmarkIsEmpty           	1000000000	         0.000119 ns/op
-BenchmarkIsEmpty           	1000000000	         0.000081 ns/op
-BenchmarkIsEmpty-2         	1000000000	         0.000134 ns/op
-BenchmarkIsEmpty-2         	1000000000	         0.000055 ns/op
-BenchmarkIsEmpty-2         	1000000000	         0.000103 ns/op
-BenchmarkIsEmpty-4         	1000000000	         0.000061 ns/op
-BenchmarkIsEmpty-4         	1000000000	         0.000106 ns/op
-BenchmarkIsEmpty-4         	1000000000	         0.000053 ns/op
-BenchmarkIsEmpty-8         	1000000000	         0.000051 ns/op
-BenchmarkIsEmpty-8         	1000000000	         0.000114 ns/op
-BenchmarkIsEmpty-8         	1000000000	         0.000050 ns/op
+BenchmarkIsEmpty                    	22247214	        54.3 ns/op
+BenchmarkIsEmpty-2                  	23466332	        51.7 ns/op
+BenchmarkIsEmpty-4                  	23064122	        51.4 ns/op
+BenchmarkIsEmpty-8                  	23634132	        51.5 ns/op
 BenchmarkNativeIsEmpty
-BenchmarkNativeIsEmpty     	1000000000	         0.000113 ns/op
-BenchmarkNativeIsEmpty     	1000000000	         0.000059 ns/op
-BenchmarkNativeIsEmpty     	1000000000	         0.000054 ns/op
-BenchmarkNativeIsEmpty-2   	1000000000	         0.000061 ns/op
-BenchmarkNativeIsEmpty-2   	1000000000	         0.000049 ns/op
-BenchmarkNativeIsEmpty-2   	1000000000	         0.000065 ns/op
-BenchmarkNativeIsEmpty-4   	1000000000	         0.000049 ns/op
-BenchmarkNativeIsEmpty-4   	1000000000	         0.000059 ns/op
-BenchmarkNativeIsEmpty-4   	1000000000	         0.000061 ns/op
-BenchmarkNativeIsEmpty-8   	1000000000	         0.000113 ns/op
-BenchmarkNativeIsEmpty-8   	1000000000	         0.000062 ns/op
-BenchmarkNativeIsEmpty-8   	1000000000	         0.000054 ns/op
+BenchmarkNativeIsEmpty              	20717202	        53.7 ns/op
+BenchmarkNativeIsEmpty-2            	23106975	        50.9 ns/op
+BenchmarkNativeIsEmpty-4            	22869487	        51.1 ns/op
+BenchmarkNativeIsEmpty-8            	23977856	        51.1 ns/op
 PASS
 ```
 
 #### CollectionUtils#MapToStringSlice
 
 ```shell script
-goos: darwin
-goarch: amd64
-pkg: github.com/sjsdfg/common-lang-in-go/CollectionUtils
+
 BenchmarkMapToStringSlice
-BenchmarkMapToStringSlice           	1000000000	         0.000242 ns/op
-BenchmarkMapToStringSlice-2         	1000000000	         0.000257 ns/op
-BenchmarkMapToStringSlice-4         	1000000000	         0.000235 ns/op
+BenchmarkMapToStringSlice           	 4942840	       292 ns/op
+BenchmarkMapToStringSlice-2         	 4770552	       263 ns/op
+BenchmarkMapToStringSlice-4         	 4740819	       302 ns/op
+BenchmarkMapToStringSlice-8         	 5007906	       238 ns/op
 BenchmarkNativeMapToStringSlice
-BenchmarkNativeMapToStringSlice     	1000000000	         0.000098 ns/op
-BenchmarkNativeMapToStringSlice-2   	1000000000	         0.000102 ns/op
-BenchmarkNativeMapToStringSlice-4   	1000000000	         0.000113 ns/op
+BenchmarkNativeMapToStringSlice     	10728244	       113 ns/op
+BenchmarkNativeMapToStringSlice-2   	10394302	       113 ns/op
+BenchmarkNativeMapToStringSlice-4   	10965626	       112 ns/op
+BenchmarkNativeMapToStringSlice-8   	10831770	       113 ns/op
 PASS
 ```

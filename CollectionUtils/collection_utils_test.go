@@ -50,7 +50,7 @@ func TestIsEmptySpeed(t *testing.T) {
 
 func BenchmarkIsEmpty(b *testing.B) {
 	strings := make([]string, 0)
-	for i := 0; i < 1_000; i++ {
+	for i := 0; i < b.N; i++ {
 		if IsEmpty(strings) {
 
 		}
@@ -59,7 +59,7 @@ func BenchmarkIsEmpty(b *testing.B) {
 
 func BenchmarkNativeIsEmpty(b *testing.B) {
 	strings := make([]string, 0)
-	for i := 0; i < 1_000; i++ {
+	for i := 0; i < b.N; i++ {
 		if IsEmpty(strings) {
 
 		}

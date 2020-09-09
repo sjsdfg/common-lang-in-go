@@ -61,7 +61,7 @@ func NativeMapToStringSlice(list []*student) []string {
 
 func BenchmarkMapToStringSlice(b *testing.B) {
 	students := createStudents()
-	for i := 0; i < 1000; i++ {
+	for i := 0; i < b.N; i++ {
 		MapToStringSlice(students, func(i int) string {
 			return students[i].name
 		})
@@ -70,7 +70,7 @@ func BenchmarkMapToStringSlice(b *testing.B) {
 
 func BenchmarkNativeMapToStringSlice(b *testing.B) {
 	students := createStudents()
-	for i := 0; i < 1000; i++ {
+	for i := 0; i < b.N; i++ {
 		NativeMapToStringSlice(students)
 	}
 }
