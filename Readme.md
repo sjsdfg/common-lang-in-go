@@ -36,102 +36,123 @@ go get github.com/sjsdfg/common-lang-in-go
 - DefaultIfEmpty(str, defaultStr string) string
 - If(condition bool, ifTrue, ifFalse string) string
 - Truncate(str string, startIndex, endIndex int) string
- 
-```go
-func TestIsEmpty(t *testing.T) {
-	assert.Equal(t, true, IsEmpty(Empty))
-}
-
-func TestIsNotEmpty(t *testing.T) {
-	testCase := "test"
-	assert.Equal(t, true, IsNotEmpty(testCase))
-}
-
-func TestIsBlank(t *testing.T) {
-	assert.Equal(t, true, IsBlank(" "))
-	assert.Equal(t, true, IsBlank("	"))
-}
-
-func TestIsNotBlank(t *testing.T) {
-	assert.Equal(t, true, IsNotBlank(" 123"))
-	assert.Equal(t, false, IsNotBlank(" "))
-}
-
-func TestIsAllEmpty(t *testing.T) {
-	assert.Equal(t, true, IsAllEmpty("", ""))
-	assert.Equal(t, false, IsAllEmpty("", "123"))
-}
-
-func TestIsAnyEmpty(t *testing.T) {
-	assert.Equal(t, true, IsAnyEmpty("", "123"))
-	assert.Equal(t, false, IsAnyEmpty("123", "324"))
-}
-
-func TestIsAnyNoneEmpty(t *testing.T) {
-	assert.Equal(t, true, IsAnyNoneEmpty("", "123"))
-	assert.Equal(t, false, IsAnyNoneEmpty())
-	assert.Equal(t, false, IsAnyNoneEmpty("", ""))
-}
-
-func TestEqual(t *testing.T) {
-	assert.Equal(t, true, Equal("123", "123"))
-	assert.Equal(t, true, Equal("abc", "abc"))
-	assert.Equal(t, false, Equal("abc", "Abc"))
-}
-
-func TestEqualIgnoreCase(t *testing.T) {
-	assert.Equal(t, true, EqualIgnoreCase("abc", "abc"))
-	assert.Equal(t, true, EqualIgnoreCase("abc", "Abc"))
-}
-
-func TestEqualsAny(t *testing.T) {
-	assert.Equal(t, true, EqualsAny("123", "123", "345", "abc"))
-	assert.Equal(t, false, EqualsAny("123", "345", "abc"))
-	assert.Equal(t, false, EqualsAny("abc", "345", "Abc"))
-}
-
-func TestEqualsAnyIgnoreCase(t *testing.T) {
-	assert.Equal(t, true, EqualsAnyIgnoreCase("123", "123", "345", "abc"))
-	assert.Equal(t, false, EqualsAnyIgnoreCase("123", "345", "abc"))
-	assert.Equal(t, true, EqualsAnyIgnoreCase("abc", "345", "Abc"))
-}
-
-func TestIsDigital(t *testing.T) {
-	assert.Equal(t, true, IsDigital("123456"))
-	assert.Equal(t, false, IsDigital("123asdasd"))
-}
-
-func TestDefaultIfEmpty(t *testing.T) {
-	var str = "123"
-	assert.Equal(t, str, DefaultIfEmpty("", str))
-	assert.Equal(t, str, DefaultIfEmpty(str, ""))
-}
-
-func TestIsZero(t *testing.T) {
-	assert.Equal(t, true, IsZero(Empty))
-	assert.Equal(t, true, IsZero("0"))
-	assert.Equal(t, false, IsZero("2"))
-}
-
-func TestIsAllZero(t *testing.T) {
-	assert.Equal(t, true, IsAllZero("", ""))
-	assert.Equal(t, true, IsAllZero("", "0"))
-	assert.Equal(t, false, IsAllZero("", "123"))
-}
-
-func TestTruncate(t *testing.T) {
-	testCase := "0123456789"
-	assert.Equal(t, "012", Truncate(testCase, 0, 3))
-	assert.Equal(t, "012", Truncate(testCase, -5, 3))
-	assert.Equal(t, testCase, Truncate(testCase, -5, 20))
-}
-```
 
 ## CollectionUtils
 
-```go
+### match functions
 
+- AllMatch(list interface{}, action matchFunc) bool
+- AnyMatch(list interface{}, action matchFunc) bool
+- NoneMatch(list interface{}, action matchFunc) bool
+
+**Use Case**
+```go
+func TestAllMatch(t *testing.T) {
+	testCase := []string{"a", "a", "a"}
+	assert.Equal(t, true, AllMatch(testCase, func(index int) bool {
+		return testCase[index] == "a"
+	}))
+
+	testCase = []string{"a", "a", "b"}
+	assert.Equal(t, false, AllMatch(testCase, func(index int) bool {
+		return testCase[index] == "a"
+	}))
+}
+
+func TestAnyMatch(t *testing.T) {
+	testCase := []string{"a", "a", "b"}
+	assert.Equal(t, true, AnyMatch(testCase, func(index int) bool {
+		return testCase[index] == "b"
+	}))
+
+	testCase = []string{"a", "a", "b"}
+	assert.Equal(t, false, AnyMatch(testCase, func(index int) bool {
+		return testCase[index] == "c"
+	}))
+}
+
+func TestNoneMatch(t *testing.T) {
+	testCase := []string{"a", "a", "b"}
+	assert.Equal(t, true, NoneMatch(testCase, func(index int) bool {
+		return testCase[index] == "c"
+	}))
+
+	testCase = []string{"a", "a", "b"}
+	assert.Equal(t, false, NoneMatch(testCase, func(index int) bool {
+		return testCase[index] == "b"
+	}))
+}
 ```
+
+### empty judgement
+
+- IsEmpty(collection interface{})
+- IsNotEmpty(collection interface{}) bool
+
+### map function
+
+这个是由于没有 Java Stream 里面的 map，导致每次提取某一类型的字段成为数组，写的代码十分冗余。所以抽象出来的。
+
+由于不支持泛型，只能书写基本类型的方法调用。不过我的个人场景就是提取某一个字段（尤其是 id），目前还够用。
+
+- MapToStringSlice(list interface{}, action func(index int) string) []string
+- MapToIntSlice(list interface{}, action func(index int) int) []int
+- MapToInt64Slice(list interface{}, action func(index int) int64) []int64
+- MapToFloat64Slice(list interface{}, action func(index int) float64) []float64
+- MapToFloat32Slice(list interface{}, action func(index int) float32) []float32
+
+**Use Case**
+```go
+func TestMapToStringSlice(t *testing.T) {
+	students := createStudents()
+	timer := TimeUtils.NewTimer()
+	reflectSlice := MapToStringSlice(students, func(i int) string {
+		return students[i].name
+	})
+	t.Logf("MapToStringSlice cost %d nanos", timer.GetDurationInNanos())
+
+	timer.Reset()
+	nativeSlice := NativeMapToStringSlice(students)
+	t.Logf("NativeMapToStringSlice cost %d nanos", timer.GetDurationInNanos())
+	assert.Equal(t, nativeSlice, reflectSlice)
+}
+```
+
+### iterate
+
+- ForEach(list interface{}, action func(index int))：之前写 Java 写惯了，觉得使用 return 代替 continue 是可读性更高的代码，因为可以提早返回减少代码的嵌套接口。因此抽象出了该方法
+
+```go
+func TestForEach(t *testing.T) {
+	students := createStudents()
+	ForEach(students, func(index int) {
+		t.Log(students[index])
+	})
+
+	ForEach(students, func(index int) {
+		students[index].name = "testing"
+	})
+
+	ForEach(students, func(index int) {
+		assert.Equal(t, "testing", students[index].name)
+	})
+}
+```
+
+### 注意
+
+以上方法类型为 `FunctionName(list interface{}, action func(index int))` 均可以替换为  `FunctionName(len int, action func(index int))`
+
+比如 ForEach 的实现可以为 
+```go
+func ForEach(len int, action func(i int)) {
+	for i := 0; i < len; i++ {
+		action(i)
+	}
+}
+```
+
+这个版本的运行效率更高。但是考虑到边界检查的安全性问题，我还是更倾向于传入 list 进来，通过反射来获取列表的长度。相关代码可查看 https://github.com/sjsdfg/common-lang-in-go/blob/faster/CollectionUtils/collection_utils.go
 
 ## Benchmark
 
