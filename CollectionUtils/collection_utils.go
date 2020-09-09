@@ -17,3 +17,16 @@ func IsEmpty(collection interface{}) bool {
 func IsNotEmpty(collection interface{}) bool {
 	return !IsEmpty(collection)
 }
+
+func ForEach(list interface{}, action func(index int)) {
+	if list == nil || action == nil {
+		return
+	}
+	value := reflect.ValueOf(list)
+	if kind := value.Type().Kind(); kind != reflect.Array && kind != reflect.Slice {
+		return
+	}
+	for i := 0; i < value.Len(); i++ {
+		action(i)
+	}
+}

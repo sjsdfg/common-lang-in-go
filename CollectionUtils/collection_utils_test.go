@@ -65,3 +65,18 @@ func BenchmarkNativeIsEmpty(b *testing.B) {
 		}
 	}
 }
+
+func TestForEach(t *testing.T) {
+	students := createStudents()
+	ForEach(students, func(index int) {
+		t.Log(students[index])
+	})
+
+	ForEach(students, func(index int) {
+		students[index].name = "testing"
+	})
+
+	ForEach(students, func(index int) {
+		assert.Equal(t, "testing", students[index].name)
+	})
+}
