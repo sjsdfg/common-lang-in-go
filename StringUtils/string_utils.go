@@ -14,17 +14,6 @@ func IsNotEmpty(str string) bool {
 	return !IsEmpty(str)
 }
 
-func IsNotBlank(str string) bool {
-	if IsEmpty(str) {
-		return false
-	}
-	return IsNotEmpty(strings.TrimSpace(str))
-}
-
-func IsBlank(str string) bool {
-	return !IsNotBlank(str)
-}
-
 func IsAllEmpty(list ...string) bool {
 	if len(list) <= 0 {
 		return true
@@ -59,6 +48,56 @@ func IsAnyNoneEmpty(list ...string) bool {
 		}
 	}
 	return false
+}
+
+func IsBlank(str string) bool {
+	return !IsNotBlank(str)
+}
+
+func IsNotBlank(str string) bool {
+	if IsEmpty(str) {
+		return false
+	}
+	return IsNotEmpty(strings.TrimSpace(str))
+}
+
+func IsZero(str string) bool {
+	if IsEmpty(str) || str == "0" {
+		return true
+	}
+	return false
+}
+
+func IsNotZero(str string) bool {
+	return !IsZero(str)
+}
+
+func IsAnyZero(list ...string) bool {
+	if len(list) <= 0 {
+		return true
+	}
+	for _, s := range list {
+		if IsZero(s) {
+			return true
+		}
+	}
+	return false
+}
+
+func IsAllZero(list ...string) bool {
+	if len(list) <= 0 {
+		return true
+	}
+	for _, s := range list {
+		if IsNotZero(s) {
+			return false
+		}
+	}
+	return true
+}
+
+func IsAnyNoneZero(list ...string) bool {
+	return !IsAllZero(list...)
 }
 
 func Equal(str1, str2 string) bool {
@@ -120,45 +159,6 @@ func If(condition bool, ifTrue, ifFalse string) string {
 		return ifTrue
 	}
 	return ifFalse
-}
-
-func IsZero(str string) bool {
-	if IsEmpty(str) || str == "0" {
-		return true
-	}
-	return false
-}
-
-func IsNotZero(str string) bool {
-	return !IsZero(str)
-}
-
-func IsAnyZero(list ...string) bool {
-	if len(list) <= 0 {
-		return true
-	}
-	for _, s := range list {
-		if IsZero(s) {
-			return true
-		}
-	}
-	return false
-}
-
-func IsAllZero(list ...string) bool {
-	if len(list) <= 0 {
-		return true
-	}
-	for _, s := range list {
-		if IsNotZero(s) {
-			return false
-		}
-	}
-	return true
-}
-
-func IsAnyNoneZero(list ...string) bool {
-	return !IsAllZero(list...)
 }
 
 // string truncate [starIndex, endIndex)

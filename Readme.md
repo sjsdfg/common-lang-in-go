@@ -5,10 +5,132 @@ https://camo.githubusercontent.com/915b7be44ada53c290eb157634330494ebe3e30a/6874
 )](https://pkg.go.dev/github.com/sjsdfg/common-lang-in-go)
 [![Go Report Card](https://goreportcard.com/badge/github.com/ethereum/go-ethereum)](https://goreportcard.com/report/github.com/sjsdfg/common-lang-in-go)
 
+Java 程序员编写的类似 common-lang 工具包
+包名就是要用大驼峰，不想改成 go 规范的包名。自己写的任性
+
 ## how to use
 
 ```shell script
 go get github.com/sjsdfg/common-lang-in-go
+```
+
+### StringUtils
+
+- IsEmpty(str string) bool
+- IsNotEmpty(str string) bool
+- IsAllEmpty(list ...string) bool
+- IsAnyEmpty(list ...string) bool
+- IsAnyNoneEmpty(list ...string) bool
+- IsBlank(str string) bool
+- IsNotBlank(str string) bool
+- IsZero(str string) bool
+- IsNotZero(str string) bool
+- IsAnyZero(list ...string) bool
+- IsAllZero(list ...string) bool
+- IsAnyNoneZero(list ...string) bool
+- Equal(str1, str2 string) bool
+- EqualIgnoreCase(str1, str2 string) bool
+- EqualsAny(str string, list ...string) bool
+- EqualsAnyIgnoreCase(str string, list ...string) bool
+- IsDigital(str string) bool
+- DefaultIfEmpty(str, defaultStr string) string
+- If(condition bool, ifTrue, ifFalse string) string
+- Truncate(str string, startIndex, endIndex int) string
+ 
+```go
+func TestIsEmpty(t *testing.T) {
+	assert.Equal(t, true, IsEmpty(Empty))
+}
+
+func TestIsNotEmpty(t *testing.T) {
+	testCase := "test"
+	assert.Equal(t, true, IsNotEmpty(testCase))
+}
+
+func TestIsBlank(t *testing.T) {
+	assert.Equal(t, true, IsBlank(" "))
+	assert.Equal(t, true, IsBlank("	"))
+}
+
+func TestIsNotBlank(t *testing.T) {
+	assert.Equal(t, true, IsNotBlank(" 123"))
+	assert.Equal(t, false, IsNotBlank(" "))
+}
+
+func TestIsAllEmpty(t *testing.T) {
+	assert.Equal(t, true, IsAllEmpty("", ""))
+	assert.Equal(t, false, IsAllEmpty("", "123"))
+}
+
+func TestIsAnyEmpty(t *testing.T) {
+	assert.Equal(t, true, IsAnyEmpty("", "123"))
+	assert.Equal(t, false, IsAnyEmpty("123", "324"))
+}
+
+func TestIsAnyNoneEmpty(t *testing.T) {
+	assert.Equal(t, true, IsAnyNoneEmpty("", "123"))
+	assert.Equal(t, false, IsAnyNoneEmpty())
+	assert.Equal(t, false, IsAnyNoneEmpty("", ""))
+}
+
+func TestEqual(t *testing.T) {
+	assert.Equal(t, true, Equal("123", "123"))
+	assert.Equal(t, true, Equal("abc", "abc"))
+	assert.Equal(t, false, Equal("abc", "Abc"))
+}
+
+func TestEqualIgnoreCase(t *testing.T) {
+	assert.Equal(t, true, EqualIgnoreCase("abc", "abc"))
+	assert.Equal(t, true, EqualIgnoreCase("abc", "Abc"))
+}
+
+func TestEqualsAny(t *testing.T) {
+	assert.Equal(t, true, EqualsAny("123", "123", "345", "abc"))
+	assert.Equal(t, false, EqualsAny("123", "345", "abc"))
+	assert.Equal(t, false, EqualsAny("abc", "345", "Abc"))
+}
+
+func TestEqualsAnyIgnoreCase(t *testing.T) {
+	assert.Equal(t, true, EqualsAnyIgnoreCase("123", "123", "345", "abc"))
+	assert.Equal(t, false, EqualsAnyIgnoreCase("123", "345", "abc"))
+	assert.Equal(t, true, EqualsAnyIgnoreCase("abc", "345", "Abc"))
+}
+
+func TestIsDigital(t *testing.T) {
+	assert.Equal(t, true, IsDigital("123456"))
+	assert.Equal(t, false, IsDigital("123asdasd"))
+}
+
+func TestDefaultIfEmpty(t *testing.T) {
+	var str = "123"
+	assert.Equal(t, str, DefaultIfEmpty("", str))
+	assert.Equal(t, str, DefaultIfEmpty(str, ""))
+}
+
+func TestIsZero(t *testing.T) {
+	assert.Equal(t, true, IsZero(Empty))
+	assert.Equal(t, true, IsZero("0"))
+	assert.Equal(t, false, IsZero("2"))
+}
+
+func TestIsAllZero(t *testing.T) {
+	assert.Equal(t, true, IsAllZero("", ""))
+	assert.Equal(t, true, IsAllZero("", "0"))
+	assert.Equal(t, false, IsAllZero("", "123"))
+}
+
+func TestTruncate(t *testing.T) {
+	testCase := "0123456789"
+	assert.Equal(t, "012", Truncate(testCase, 0, 3))
+	assert.Equal(t, "012", Truncate(testCase, -5, 3))
+	assert.Equal(t, testCase, Truncate(testCase, -5, 20))
+}
+```
+
+## CollectionUtils
+
+```go
+
 ```
 
 ## Benchmark
