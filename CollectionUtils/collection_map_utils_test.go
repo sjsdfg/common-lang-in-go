@@ -37,8 +37,8 @@ func createStudents() []*student {
 func TestMapToStringSlice(t *testing.T) {
 	students := createStudents()
 	timer := TimeUtils.NewTimer()
-	reflectSlice := MapToStringSlice(students, func(i interface{}) string {
-		return i.(*student).name
+	reflectSlice := MapToStringSlice(students, func(i int) string {
+		return students[i].name
 	})
 	t.Logf("MapToStringSlice cost %d nanos", timer.GetDurationInNanos())
 
@@ -62,8 +62,8 @@ func NativeMapToStringSlice(list []*student) []string {
 func BenchmarkMapToStringSlice(b *testing.B) {
 	students := createStudents()
 	for i := 0; i < 1000; i++ {
-		MapToStringSlice(students, func(i interface{}) string {
-			return i.(*student).name
+		MapToStringSlice(students, func(i int) string {
+			return students[i].name
 		})
 	}
 }
@@ -80,5 +80,6 @@ func TestMapToIntSlice(t *testing.T) {
 	ageSlice := MapToIntSlice(students, func(i interface{}) int {
 		return i.(*student).age
 	})
+	t.Log(students)
 	t.Log(ageSlice)
 }

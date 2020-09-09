@@ -3,7 +3,7 @@ package CollectionUtils
 import "reflect"
 
 // extract string field from list
-func MapToStringSlice(list interface{}, action func(interface{}) string) []string {
+func MapToStringSlice(list interface{}, action func(index int) string) []string {
 	if list == nil || action == nil {
 		return []string{}
 	}
@@ -14,8 +14,7 @@ func MapToStringSlice(list interface{}, action func(interface{}) string) []strin
 	}
 	result := make([]string, 0, value.Len())
 	for i := 0; i < value.Len(); i++ {
-		elem := value.Index(i)
-		result = append(result, action(elem.Interface()))
+		result = append(result, action(i))
 	}
 	return result
 }
