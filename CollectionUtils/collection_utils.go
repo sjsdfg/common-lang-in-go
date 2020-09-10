@@ -18,7 +18,7 @@ func IsNotEmpty(collection interface{}) bool {
 	return !IsEmpty(collection)
 }
 
-func ForEach(list interface{}, action func(index int)) {
+func ForEach(list interface{}, action func(i int)) {
 	if list == nil || action == nil {
 		return
 	}

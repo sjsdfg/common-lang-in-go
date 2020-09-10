@@ -3,7 +3,7 @@ package CollectionUtils
 import "reflect"
 
 // extract string field from list
-func MapToStringSlice(list interface{}, action func(index int) string) []string {
+func MapToStringSlice(list interface{}, action func(i int) string) []string {
 	if list == nil || action == nil {
 		return []string{}
 	}
@@ -19,7 +19,7 @@ func MapToStringSlice(list interface{}, action func(index int) string) []string 
 }
 
 // extract int field from list
-func MapToIntSlice(list interface{}, action func(index int) int) []int {
+func MapToIntSlice(list interface{}, action func(i int) int) []int {
 	if list == nil || action == nil {
 		return []int{}
 	}
@@ -35,7 +35,7 @@ func MapToIntSlice(list interface{}, action func(index int) int) []int {
 }
 
 // extract int64 field from list
-func MapToInt64Slice(list interface{}, action func(index int) int64) []int64 {
+func MapToInt64Slice(list interface{}, action func(i int) int64) []int64 {
 	if list == nil || action == nil {
 		return []int64{}
 	}
@@ -51,7 +51,7 @@ func MapToInt64Slice(list interface{}, action func(index int) int64) []int64 {
 }
 
 // extract float64 field from list
-func MapToFloat64Slice(list interface{}, action func(index int) float64) []float64 {
+func MapToFloat64Slice(list interface{}, action func(i int) float64) []float64 {
 	if list == nil || action == nil {
 		return []float64{}
 	}
@@ -67,7 +67,7 @@ func MapToFloat64Slice(list interface{}, action func(index int) float64) []float
 }
 
 // extract float32 field from list
-func MapToFloat32Slice(list interface{}, action func(index int) float32) []float32 {
+func MapToFloat32Slice(list interface{}, action func(i int) float32) []float32 {
 	if list == nil || action == nil {
 		return []float32{}
 	}

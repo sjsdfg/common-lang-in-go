@@ -79,4 +79,10 @@ func TestForEach(t *testing.T) {
 	ForEach(students, func(index int) {
 		assert.Equal(t, "testing", students[index].name)
 	})
+
+	var array = make([]*student, 0, 30)
+	ForEach(students, func(index int) {
+		array = append(array, students[index])
+	})
+	assert.Equal(t, students, array)
 }

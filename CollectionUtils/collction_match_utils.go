@@ -2,7 +2,7 @@ package CollectionUtils
 
 import "reflect"
 
-type matchFunc func(index int) bool
+type matchFunc func(i int) bool
 
 func AllMatch(list interface{}, action matchFunc) bool {
 	if list == nil || action == nil {
@@ -13,8 +13,8 @@ func AllMatch(list interface{}, action matchFunc) bool {
 		return false
 	}
 	for i := 0; i < value.Len(); i++ {
-		result := action(i)
-		if result == false {
+		match := action(i)
+		if !match {
 			return false
 		}
 	}
@@ -30,8 +30,8 @@ func AnyMatch(list interface{}, action matchFunc) bool {
 		return false
 	}
 	for i := 0; i < value.Len(); i++ {
-		result := action(i)
-		if result {
+		match := action(i)
+		if match {
 			return true
 		}
 	}
@@ -47,8 +47,8 @@ func NoneMatch(list interface{}, action matchFunc) bool {
 		return false
 	}
 	for i := 0; i < value.Len(); i++ {
-		result := action(i)
-		if result {
+		match := action(i)
+		if match {
 			return false
 		}
 	}
