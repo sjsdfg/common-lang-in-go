@@ -1,16 +1,15 @@
 package TimeUtils
 
 import (
-	"github.com/sjsdfg/common-lang-in-go/DateUtils"
 	"time"
 )
 
 func GetCurrentMills() int64 {
-	return time.Now().Unix() * DateUtils.MillsPerSecond
+	return time.Now().Unix() * MillsPerSecond
 }
 
 func GetMills(time time.Time) int64 {
-	return time.UnixNano() / DateUtils.NsPerMill
+	return time.UnixNano() / NsPerMill
 }
 
 func Max(list ...time.Time) time.Time {
