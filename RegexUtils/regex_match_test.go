@@ -739,4 +739,7 @@ func TestEmoji(t *testing.T) {
 		parsed := Emojis(test)
 		assert.NotEqual(t, []string{test}, parsed, "they should not be matched")
 	}
+
+	testCase := "💩🍦😳"
+	assert.Equal(t, tests, Emojis(testCase), "they should be matched")
 }
