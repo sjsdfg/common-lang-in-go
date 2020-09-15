@@ -151,3 +151,7 @@ func IBANs(text string) []string {
 func GitRepos(text string) []string {
 	return match(text, GitRepoRegex)
 }
+
+func Emojis(text string) []string {
+	return match(text, EmojiRegex)
+}

@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestCommonRegex_Date(t *testing.T) {
+func TestDate(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -26,7 +26,7 @@ func TestCommonRegex_Date(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_Time(t *testing.T) {
+func TestTime(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -46,7 +46,7 @@ func TestCommonRegex_Time(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_Phones(t *testing.T) {
+func TestPhones(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -70,7 +70,7 @@ func TestCommonRegex_Phones(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_PhonesWithExts(t *testing.T) {
+func TestPhonesWithExts(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -90,7 +90,7 @@ func TestCommonRegex_PhonesWithExts(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_Links(t *testing.T) {
+func TestLinks(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -109,7 +109,7 @@ func TestCommonRegex_Links(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_Emails(t *testing.T) {
+func TestEmails(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -135,7 +135,7 @@ func TestCommonRegex_Emails(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_IPv4s(t *testing.T) {
+func TestIPv4s(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -153,7 +153,7 @@ func TestCommonRegex_IPv4s(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_IPv6s(t *testing.T) {
+func TestIPv6s(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -172,7 +172,7 @@ func TestCommonRegex_IPv6s(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_IPs(t *testing.T) {
+func TestIPs(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -196,7 +196,7 @@ func TestCommonRegex_IPs(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_NotKnownPorts(t *testing.T) {
+func TestNotKnownPorts(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -227,7 +227,7 @@ func TestCommonRegex_NotKnownPorts(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_Prices(t *testing.T) {
+func TestPrices(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -254,7 +254,7 @@ func TestCommonRegex_Prices(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_HexColors(t *testing.T) {
+func TestHexColors(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -279,7 +279,7 @@ func TestCommonRegex_HexColors(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_CreditCards(t *testing.T) {
+func TestCreditCards(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -296,7 +296,7 @@ func TestCommonRegex_CreditCards(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_BtcAddresses(t *testing.T) {
+func TestBtcAddresses(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -325,7 +325,7 @@ func TestCommonRegex_BtcAddresses(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_StreetAddresses(t *testing.T) {
+func TestStreetAddresses(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -351,7 +351,7 @@ func TestCommonRegex_StreetAddresses(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_ZipCodes(t *testing.T) {
+func TestZipCodes(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -376,7 +376,7 @@ func TestCommonRegex_ZipCodes(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_PoBoxes(t *testing.T) {
+func TestPoBoxes(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -400,7 +400,7 @@ func TestCommonRegex_PoBoxes(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_SSNs(t *testing.T) {
+func TestSSNs(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -417,7 +417,7 @@ func TestCommonRegex_SSNs(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_MD5Hexes(t *testing.T) {
+func TestMD5Hexes(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -445,7 +445,7 @@ func TestCommonRegex_MD5Hexes(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_SHA1Hexes(t *testing.T) {
+func TestSHA1Hexes(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -473,7 +473,7 @@ func TestCommonRegex_SHA1Hexes(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_SHA256Hexes(t *testing.T) {
+func TestSHA256Hexes(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -501,7 +501,7 @@ func TestCommonRegex_SHA256Hexes(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_GUIDs(t *testing.T) {
+func TestGUIDs(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -534,7 +534,7 @@ func TestCommonRegex_GUIDs(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_ISBN13s(t *testing.T) {
+func TestISBN13s(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -561,7 +561,7 @@ func TestCommonRegex_ISBN13s(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_ISBN10s(t *testing.T) {
+func TestISBN10s(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -588,7 +588,7 @@ func TestCommonRegex_ISBN10s(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_VISACreditCards(t *testing.T) {
+func TestVISACreditCards(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -614,7 +614,7 @@ func TestCommonRegex_VISACreditCards(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_MCCreditCards(t *testing.T) {
+func TestMCCreditCards(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -641,7 +641,7 @@ func TestCommonRegex_MCCreditCards(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_MACAddresses(t *testing.T) {
+func TestMACAddresses(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -667,7 +667,7 @@ func TestCommonRegex_MACAddresses(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_IBANs(t *testing.T) {
+func TestIBANs(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -693,7 +693,7 @@ func TestCommonRegex_IBANs(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_GitRepos(t *testing.T) {
+func TestGitRepos(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -715,5 +715,28 @@ func TestCommonRegex_GitRepos(t *testing.T) {
 	for _, test := range failingTests {
 		parsed := GitRepos(test)
 		assert.NotEqual([]string{test}, parsed, "they should not be matched")
+	}
+}
+
+func TestEmoji(t *testing.T) {
+	tests := []string{
+		"💩",
+		"🍦",
+		"😳",
+	}
+
+	failingTests := []string{
+		"https://github.com/mingrammer/commonregex",
+		"test@github.com:mingrammer/commonregex.git",
+	}
+
+	for _, test := range tests {
+		parsed := Emojis(test)
+		assert.Equal(t, []string{test}, parsed, "they should be matched")
+	}
+
+	for _, test := range failingTests {
+		parsed := Emojis(test)
+		assert.NotEqual(t, []string{test}, parsed, "they should not be matched")
 	}
 }
