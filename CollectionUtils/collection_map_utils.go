@@ -1,6 +1,8 @@
 package CollectionUtils
 
-import "reflect"
+import (
+	"reflect"
+)
 
 // extract string field from list
 func MapToStringSlice(list interface{}, action func(i int) string) []string {
@@ -16,6 +18,24 @@ func MapToStringSlice(list interface{}, action func(i int) string) []string {
 		result = append(result, action(i))
 	}
 	return result
+}
+
+func MapToStringSliceIgnoreByFunc(list interface{}, action func(i int) string, condition func(s string) bool) []string {
+	if list == nil || action == nil {
+		return []string{}
+	}
+	value := reflect.ValueOf(list)
+	if kind := value.Type().Kind(); kind != reflect.Array && kind != reflect.Slice {
+		return []string{}
+	}
+	result := make([]string, 0, value.Len())
+	for i := 0; i < value.Len(); i++ {
+		s := action(i)
+		if condition(s) {
+			continue
+		}
+		result = append(result, s)
+	}
 }
 
 // extract int field from list
