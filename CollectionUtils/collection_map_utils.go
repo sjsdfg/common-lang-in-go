@@ -20,7 +20,7 @@ func MapToStringSlice(list interface{}, action func(i int) string) []string {
 	return result
 }
 
-func MapToStringSliceIgnoreByFunc(list interface{}, action func(i int) string, condition func(s string) bool) []string {
+func MapToStringSliceIgnoreByCondition(list interface{}, action func(i int) string, condition func(s string) bool) []string {
 	if list == nil || action == nil {
 		return []string{}
 	}
