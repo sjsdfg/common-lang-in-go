@@ -5,17 +5,15 @@ func Ptr(i int64) *int64 {
 }
 
 func GetPtrValue(s *int64) int64 {
-	if s == nil{
+	if s == nil {
 		return int64(0)
 	}
-
 	return *s
 }
 
 func GetPtrValueWithDefault(s *int64, def int64) int64 {
-	if s == nil{
+	if s == nil {
 		return def
 	}
-
 	return *s
 }

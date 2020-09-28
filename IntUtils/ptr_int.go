@@ -5,17 +5,15 @@ func Ptr(i int) *int {
 }
 
 func GetPtrValue(s *int) int {
-	if s == nil{
+	if s == nil {
 		return int(0)
 	}
-
 	return *s
 }
 
 func GetPtrValueWithDefault(s *int, def int) int {
-	if s == nil{
+	if s == nil {
 		return def
 	}
-
 	return *s
 }
