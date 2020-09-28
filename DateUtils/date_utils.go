@@ -1,6 +1,9 @@
 package DateUtils
 
-import "time"
+import (
+	"github.com/sjsdfg/common-lang-in-go/IntUtils"
+	"time"
+)
 
 func GetStartOfDay(now time.Time) time.Time {
 	return time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, now.Location())
@@ -11,11 +14,9 @@ func GetEndOfDay(now time.Time) time.Time {
 }
 
 func GetStartOfWeek(now time.Time) time.Time {
-	offset := int(time.Monday - now.Weekday())
-	if offset > 0 {
-		offset = -6
-	}
-	return time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, now.Location()).AddDate(0, 0, offset)
+	weekday := now.Weekday()
+	return time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, now.Location()).
+		AddDate(0, 0, IntUtils.If(weekday == time.Sunday, -6, int(time.Monday-weekday)))
 }
 
 func GetEndOfWeek(now time.Time) time.Time {
