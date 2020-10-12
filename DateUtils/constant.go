@@ -9,5 +9,5 @@ const (
 
 	YYYY_MM_DD = "2006-01-02"
 	YY_MM_DD   = "06-01-02"
-	YYMM_DD_HH = "06-01-02-15"
+	YYMM_DD_HH = "06-01-02 15"
 )
