@@ -92,3 +92,12 @@ func TestTruncate(t *testing.T) {
 	assert.Equal(t, "012", Truncate(testCase, -5, 3))
 	assert.Equal(t, testCase, Truncate(testCase, -5, 20))
 }
+
+func TestDistinct(t *testing.T) {
+	testCase := []string{"1", "1", "1"}
+	testCase2 := []string{"2", "2", "2"}
+	var testCase3 []string
+	assert.Equal(t, []string{"1"}, Distinct(testCase...))
+	assert.Equal(t, []string{"1", "2"}, Distinct(append(testCase, testCase2...)...))
+	assert.Equal(t, []string(nil), Distinct(testCase3...))
+}

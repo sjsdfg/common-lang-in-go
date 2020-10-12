@@ -188,3 +188,19 @@ func GetPtrValueWithDefault(s *string, def string) string {
 	}
 	return *s
 }
+
+func Distinct(list ...string) []string {
+	if len(list) <= 0 {
+		return nil
+	}
+	result := make([]string, 0, len(list))
+	distinctMap := make(map[string]struct{}, len(list))
+
+	for _, s := range list {
+		if _, found := distinctMap[s]; !found {
+			distinctMap[s] = struct{}{}
+			result = append(result, s)
+		}
+	}
+	return result
+}
