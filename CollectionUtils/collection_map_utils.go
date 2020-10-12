@@ -36,6 +36,7 @@ func MapToStringSliceIgnoreByCondition(list interface{}, action func(i int) stri
 		}
 		result = append(result, s)
 	}
+	return result
 }
 
 // extract int field from list
