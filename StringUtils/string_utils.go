@@ -2,6 +2,7 @@ package StringUtils
 
 import (
 	"github.com/sjsdfg/common-lang-in-go/IntUtils"
+	"strconv"
 	"strings"
 	"unicode"
 )
@@ -201,6 +202,17 @@ func Distinct(list ...string) []string {
 			distinctMap[s] = struct{}{}
 			result = append(result, s)
 		}
+	}
+	return result
+}
+
+func ToInt64(s string) int64 {
+	if IsZero(s) {
+		return 0
+	}
+	result, err := strconv.ParseInt(s, 10, 64)
+	if err != nil {
+		return 0
 	}
 	return result
 }
