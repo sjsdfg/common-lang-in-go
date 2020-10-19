@@ -5,6 +5,14 @@ import (
 	"time"
 )
 
+func GetStartOfHour(now time.Time) time.Time {
+	return time.Date(now.Year(), now.Month(), now.Day(), now.Hour(), 0, 0, 0, now.Location())
+}
+
+func GetEndOfHour(now time.Time) time.Time {
+	return time.Date(now.Year(), now.Month(), now.Day(), now.Hour(), 59, 59, 0, now.Location())
+}
+
 func GetStartOfDay(now time.Time) time.Time {
 	return time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, now.Location())
 }
@@ -31,4 +39,12 @@ func GetStartOfMonth(now time.Time) time.Time {
 func GetEndOfMonth(now time.Time) time.Time {
 	nextMonth := GetStartOfMonth(now.AddDate(0, 1, 0))
 	return GetEndOfDay(nextMonth.AddDate(0, 0, -1))
+}
+
+func InRang(now, start, end time.Time) bool {
+	return start.Before(now) && end.After(now)
+}
+
+func OutOfRange(now, start, end time.Time) bool {
+	return !InRang(now, start, end)
 }
