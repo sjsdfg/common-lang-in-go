@@ -41,10 +41,10 @@ func GetEndOfMonth(now time.Time) time.Time {
 	return GetEndOfDay(nextMonth.AddDate(0, 0, -1))
 }
 
-func InRang(now, start, end time.Time) bool {
+func InRange(now, start, end time.Time) bool {
 	return start.Before(now) && end.After(now)
 }
 
 func OutOfRange(now, start, end time.Time) bool {
-	return !InRang(now, start, end)
+	return !InRange(now, start, end)
 }
