@@ -1,6 +1,8 @@
 package RegexUtils
 
-import "regexp"
+import (
+	"regexp"
+)
 
 func match(text string, regex *regexp.Regexp) []string {
 	parsed := regex.FindAllString(text, -1)

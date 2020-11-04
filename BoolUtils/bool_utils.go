@@ -46,3 +46,10 @@ func xor(a, b bool) bool {
 func IsFalse(b bool) bool {
 	return !b
 }
+
+func FromString(str string) bool {
+	if str == "false" || str == "0" {
+		return false
+	}
+	return true
+}
