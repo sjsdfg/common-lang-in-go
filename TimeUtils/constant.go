@@ -16,14 +16,26 @@ const (
 	NsPerSecond       = MillsPerSecond * NsPerMill
 	NsPerMinute       = MillsPerMinute * NsPerMill
 	NsPerHour         = MillsPerHour * NsPerMill
-	NsPerDay          = MillsPerDay * MillsPerDay
+	NsPerDay          = MillsPerDay * NsPerMill
+)
+
+const (
+	SecondsPerMinutes int64 = 60
+	SecondsPerHour          = SecondsPerMinutes * 60
+	SecondsPerDay           = SecondsPerHour * 24
+	SecondsPerWeek          = SecondsPerDay * 7
 )
 
 const (
 	MinutesPerHour int64 = 60
-	MinutesPerDay        = MinutesPerHour * HoursPerDay
+	MinutesPerDay        = MinutesPerHour * 24
+	MinutesPerWeek       = MinutesPerDay * 7
 )
 
 const (
 	HoursPerDay int64 = 24
+)
+
+const (
+	DaysPerWeek int64 = 7
 )
