@@ -42,7 +42,7 @@ func GetEndOfMonth(now time.Time) time.Time {
 }
 
 func InRange(now, start, end time.Time) bool {
-	return start.Before(now) && end.After(now)
+	return start.Nanosecond() <= now.Nanosecond() && now.Nanosecond() <= end.Nanosecond()
 }
 
 func OutOfRange(now, start, end time.Time) bool {
