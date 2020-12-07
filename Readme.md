@@ -12,6 +12,7 @@ Java 程序员编写的类似 common-lang 工具包
 
 [![JetBrains](doc/logo/jetbrains.svg)](https://www.jetbrains.com/?from=common-lang-in-go)
 
+[Licenses for Open Source Development](https://www.jetbrains.com/community/opensource/#support)
 ## how to use
 
 ```shell script
