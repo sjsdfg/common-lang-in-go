@@ -20,6 +20,25 @@ func MapToStringSlice(list interface{}, action func(i int) string) []string {
 	return result
 }
 
+func MapToStringSliceIgnoreEmpty(list interface{}, action func(i int) string) []string {
+	if list == nil || action == nil {
+		return []string{}
+	}
+	value := reflect.ValueOf(list)
+	if kind := value.Type().Kind(); kind != reflect.Array && kind != reflect.Slice {
+		return []string{}
+	}
+	result := make([]string, 0, value.Len())
+	for i := 0; i < value.Len(); i++ {
+		s := action(i)
+		if len(s) <= 0 {
+			continue
+		}
+		result = append(result, s)
+	}
+	return result
+}
+
 func MapToStringSliceIgnoreByCondition(list interface{}, action func(i int) string, condition func(s string) bool) []string {
 	if list == nil || action == nil {
 		return []string{}

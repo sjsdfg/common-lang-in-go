@@ -48,6 +48,17 @@ func TestMapToStringSlice(t *testing.T) {
 	assert.Equal(t, nativeSlice, reflectSlice)
 }
 
+func TestMapToStringSliceIgnoreEmpty(t *testing.T) {
+	students := createStudents()
+	ForEach(students, func(index int) {
+		students[index].name = ""
+	})
+	names := MapToStringSliceIgnoreEmpty(students, func(i int) string {
+		return students[i].name
+	})
+	assert.Equal(t, true, len(names) <= 0)
+}
+
 func NativeMapToStringSlice(list []*student) []string {
 	if len(list) <= 0 {
 		return []string{}
