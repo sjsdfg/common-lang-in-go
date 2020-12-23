@@ -139,6 +139,10 @@ func EqualsAnyIgnoreCase(str string, list ...string) bool {
 	return false
 }
 
+func EqualsNone(str string, list ...string) bool {
+	return !EqualsAny(str, list...)
+}
+
 func IsDigital(str string) bool {
 	if IsBlank(str) {
 		return false
