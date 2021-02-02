@@ -1,10 +1,11 @@
 package StringUtils
 
 import (
-	"github.com/sjsdfg/common-lang-in-go/IntUtils"
 	"strconv"
 	"strings"
 	"unicode"
+
+	"github.com/sjsdfg/common-lang-in-go/IntUtils"
 )
 
 func IsEmpty(str string) bool {
@@ -157,6 +158,10 @@ func IsDigital(str string) bool {
 		}
 	}
 	return true
+}
+
+func IsNotDigital(str string) bool {
+	return !IsDigital(str)
 }
 
 func DefaultIfEmpty(str, defaultStr string) string {
