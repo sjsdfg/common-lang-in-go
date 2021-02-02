@@ -1,8 +1,9 @@
 package DateUtils
 
 import (
-	"github.com/sjsdfg/common-lang-in-go/IntUtils"
 	"time"
+
+	"github.com/sjsdfg/common-lang-in-go/IntUtils"
 )
 
 func GetStartOfHour(now time.Time) time.Time {
@@ -42,7 +43,7 @@ func GetEndOfMonth(now time.Time) time.Time {
 }
 
 func InRange(now, start, end time.Time) bool {
-	return start.UnixNano() <= now.UnixNano() && now.UnixNano() <= end.UnixNano()
+	return start.UnixNano() <= now.UnixNano() && now.UnixNano() < end.UnixNano()
 }
 
 func OutOfRange(now, start, end time.Time) bool {
