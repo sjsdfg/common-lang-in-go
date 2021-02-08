@@ -1,5 +1,7 @@
 package BoolUtils
 
+import "strconv"
+
 func And(list ...bool) bool {
 	if len(list) <= 0 {
 		return false
@@ -48,8 +50,9 @@ func IsFalse(b bool) bool {
 }
 
 func FromString(str string) bool {
-	if str == "false" || str == "0" {
+	parseBool, err := strconv.ParseBool(str)
+	if err != nil {
 		return false
 	}
-	return true
+	return parseBool
 }
