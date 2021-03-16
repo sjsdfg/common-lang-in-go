@@ -1,8 +1,8 @@
 package StringUtils
 
-// 假设：入参 a 和 b 都是合法的整数类型
+// 假设：入参 a 和 b 都是合法的正整数类型
 // 并且没有多余的前导 0
-func CompareDigital(a, b string) bool {
+func DigitalBiggerThan(a, b string) bool {
 	lenA := len(a)
 	lenB := len(b)
 	if lenA == lenB {
