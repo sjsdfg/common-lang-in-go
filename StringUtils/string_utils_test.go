@@ -101,3 +101,9 @@ func TestDistinct(t *testing.T) {
 	assert.Equal(t, []string{"1", "2"}, Distinct(append(testCase, testCase2...)...))
 	assert.Equal(t, []string(nil), Distinct(testCase3...))
 }
+
+func TestReverse(t *testing.T) {
+	testCase := "123456789"
+	result := "987654321"
+	assert.Equal(t, result, Reverse(testCase))
+}
