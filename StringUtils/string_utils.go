@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"strings"
 	"unicode"
+	"unicode/utf8"
 
 	"github.com/sjsdfg/common-lang-in-go/IntUtils"
 )
@@ -210,4 +211,18 @@ func ToInt64(s string) int64 {
 		return 0
 	}
 	return result
+}
+
+// 摘自 https://github.com/thinkeridea/go-extend/blob/main/exstrings/strings.go
+// go-extend 追求高性能的 go 拓展库
+func Reverse(s string) string {
+	var start, size, end int
+	buf := make([]byte, len(s))
+	for end < len(s) {
+		_, size = utf8.DecodeRuneInString(s[start:])
+		end = start + size
+		copy(buf[len(buf)-end:], s[start:end])
+		start = end
+	}
+	return string(buf)
 }
