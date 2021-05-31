@@ -31,3 +31,16 @@ func Pretty(v interface{}) []byte {
 func PrettyWithColor(v interface{}) []byte {
 	return pretty.Color(Pretty(v), pretty.TerminalStyle)
 }
+
+func ToMap(v interface{}) (map[string]interface{}, error) {
+	if v == nil {
+		return nil, nil
+	}
+	bytes, err := Marshal(v)
+	if err != nil {
+		return nil, err
+	}
+	result := make(map[string]interface{}, 10)
+	err = Unmarshal(bytes, &result)
+	return result, err
+}
