@@ -38,10 +38,31 @@ func TestJsonCopy(t *testing.T) {
 	assert.Equal(t, source, dst)
 }
 
+func TestJsonCopy2(t *testing.T) {
+	source := &UserInfo{
+		UserName:  "123",
+		UserImage: "456",
+		RoomId:    "",
+		LiveId:    "",
+		LiveState: "",
+	}
+
+	dst := &UserInfo{
+		UserName:  "",
+		UserImage: "789",
+		RoomId:    "789",
+		LiveId:    "456",
+		LiveState: "231",
+	}
+
+	_ = JsonCopy(dst, source)
+	t.Log(dst)
+}
+
 type UserInfo struct {
-	UserName  string `json:"userName"`
-	UserImage string `json:"userImage"`
-	RoomId    string `json:"roomId"`
-	LiveId    string `json:"liveId"`
-	LiveState string `json:"liveState"`
+	UserName  string `json:"userName,omitempty"`
+	UserImage string `json:"userImage,omitempty"`
+	RoomId    string `json:"roomId,omitempty"`
+	LiveId    string `json:"liveId,omitempty"`
+	LiveState string `json:"liveState,omitempty"`
 }
