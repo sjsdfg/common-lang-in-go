@@ -5,11 +5,15 @@ import (
 )
 
 func GetCurrentMills() int64 {
-	return time.Now().Unix() * MillsPerSecond
+	return GetMills(time.Now())
 }
 
 func GetMills(time time.Time) int64 {
 	return time.UnixNano() / NsPerMill
+}
+
+func FromMills(mills int64) time.Time {
+	return time.Unix(mills/MillsPerSecond, 0)
 }
 
 func Max(list ...time.Time) time.Time {

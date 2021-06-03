@@ -1,7 +1,9 @@
 package Copier
 
 import (
+	"log"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -53,6 +55,7 @@ func TestJsonCopy2(t *testing.T) {
 		RoomId:    "789",
 		LiveId:    "456",
 		LiveState: "231",
+		Time:      time.Now().Unix(),
 	}
 
 	_ = JsonCopy(dst, source)
@@ -65,4 +68,19 @@ type UserInfo struct {
 	RoomId    string `json:"roomId,omitempty"`
 	LiveId    string `json:"liveId,omitempty"`
 	LiveState string `json:"liveState,omitempty"`
+	Time      int64  `json:"time,omitempty"`
+}
+
+func TestRefer(t *testing.T) {
+	log.Println("Point1:", runSomething())
+}
+
+func runSomething() int {
+	x := 0
+	defer func(y *int) {
+		log.Println("Point2:", *y)
+		*y = 7
+	}(&x)
+	x = 2
+	return x
 }
