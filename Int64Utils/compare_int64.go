@@ -52,3 +52,12 @@ func Distinct(list ...int64) []int64 {
 	}
 	return result
 }
+
+func EqualsAny(val int64, list ...int64) bool {
+	for _, i := range list {
+		if i == val {
+			return true
+		}
+	}
+	return false
+}
