@@ -49,3 +49,11 @@ func InRange(now, start, end time.Time) bool {
 func OutOfRange(now, start, end time.Time) bool {
 	return !InRange(now, start, end)
 }
+
+func SameDay(day1, day2 time.Time) bool {
+	left := time.Unix(0, day1.UnixNano())
+	right := time.Unix(0, day2.UnixNano())
+	return left.Year() == right.Year() &&
+		left.Month() == right.Month() &&
+		left.Day() == right.Day()
+}
