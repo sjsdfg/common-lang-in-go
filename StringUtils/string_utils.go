@@ -226,3 +226,13 @@ func Reverse(s string) string {
 	}
 	return string(buf)
 }
+
+func ReplaceHolder(str string, holderMap map[string]string) string {
+	if len(holderMap) <= 0 {
+		return str
+	}
+	for holder, value := range holderMap {
+		str = strings.ReplaceAll(str, holder, value)
+	}
+	return str
+}

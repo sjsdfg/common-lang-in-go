@@ -1,8 +1,9 @@
 package StringUtils
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestIsEmpty(t *testing.T) {
@@ -106,4 +107,15 @@ func TestReverse(t *testing.T) {
 	testCase := "123456789"
 	result := "987654321"
 	assert.Equal(t, result, Reverse(testCase))
+}
+
+func TestReplaceHolder(t *testing.T) {
+	str := "{holder} must be {replace}, other {holder} same"
+	holderMap := map[string]string{
+		"{holder}":  "liming",
+		"{replace}": "clever",
+	}
+	assert.Equal(t,
+		"liming must be clever, other liming same",
+		ReplaceHolder(str, holderMap))
 }
