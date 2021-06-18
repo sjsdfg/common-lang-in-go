@@ -40,7 +40,20 @@ func ToMap(v interface{}) (map[string]interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := make(map[string]interface{}, 10)
+	result := make(map[string]interface{})
+	err = Unmarshal(bytes, &result)
+	return result, err
+}
+
+func ToStringMap(v interface{}) (map[string]string, error) {
+	if v == nil {
+		return nil, nil
+	}
+	bytes, err := Marshal(v)
+	if err != nil {
+		return nil, err
+	}
+	result := make(map[string]string)
 	err = Unmarshal(bytes, &result)
 	return result, err
 }

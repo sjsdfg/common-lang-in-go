@@ -5,6 +5,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/sjsdfg/common-lang-in-go/JsonUtils"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -68,7 +69,38 @@ type UserInfo struct {
 	RoomId    string `json:"roomId,omitempty"`
 	LiveId    string `json:"liveId,omitempty"`
 	LiveState string `json:"liveState,omitempty"`
-	Time      int64  `json:"time,omitempty"`
+	Time      int64  `json:"time,string,omitempty"`
+}
+
+type NestedUserInfo struct {
+	UserInfo UserInfo         `json:"userInfo,string,omitempty"`
+	Map      map[string]int64 `json:"map,string,omitempty"`
+}
+
+func TestJsonCopy3(t *testing.T) {
+	info := &NestedUserInfo{
+		UserInfo: UserInfo{
+			UserName:  "123",
+			UserImage: "456",
+			RoomId:    "879",
+			LiveId:    "adsf",
+			LiveState: "aga",
+			Time:      10,
+		},
+		Map: map[string]int64{"1": 3},
+	}
+	jsonStr, err := JsonUtils.MarshalToString(info)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Log(jsonStr)
+
+	info2 := &NestedUserInfo{}
+	err = JsonUtils.Unmarshal([]byte(jsonStr), info2)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Log(info2)
 }
 
 func TestRefer(t *testing.T) {
