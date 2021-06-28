@@ -42,3 +42,34 @@ type OtherStruct struct {
 	Name  string `json:"name"`
 	Value string `json:"value"`
 }
+
+func TestName(t *testing.T) {
+	m2 := map[string]string{
+		"id":                "123",
+		"successTeamMember": `"{"aaa":123}"`,
+	}
+	json2 := `{"id":"123","successTeamMember":"\"{\"aaaa\":100,\"bbbb\":200}\""}`
+	json, err := MarshalToString(m2)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Log(json)
+	t.Log(json2)
+	// assert.EqualValues(t, json2, json)
+	m := make(map[string]string)
+	err = Unmarshal(([]byte)(json2), &m)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Log(m)
+
+	// s := struct {
+	// 	Id                string           `json:"id"`
+	// 	SuccessTeamMember map[string]int64 `json:"successTeamMember"`
+	// }{}
+	// err = Unmarshal(([]byte)(json), &s)
+	// if err != nil {
+	// 	t.Fatal(err)
+	// }
+	// t.Log(s)
+}

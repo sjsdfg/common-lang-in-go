@@ -2,10 +2,15 @@ package JsonUtils
 
 import (
 	jsoniter "github.com/json-iterator/go"
+	"github.com/json-iterator/go/extra"
 	"github.com/tidwall/pretty"
 )
 
 var instance = jsoniter.ConfigCompatibleWithStandardLibrary
+
+func init() {
+	extra.RegisterFuzzyDecoders()
+}
 
 func Marshal(obj interface{}) ([]byte, error) {
 	return instance.Marshal(obj)
