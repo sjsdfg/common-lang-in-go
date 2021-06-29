@@ -2,7 +2,7 @@ package TimeUtils
 
 import "time"
 
-var Zero = time.Unix(0, 0)
+var Zero = time.Time{}
 
 const (
 	MillsPerSecond int64 = 1000
