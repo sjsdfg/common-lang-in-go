@@ -24,6 +24,10 @@ func Unmarshal(data []byte, v interface{}) error {
 	return instance.Unmarshal(data, v)
 }
 
+func UnmarshalString(data string, v interface{}) error {
+	return instance.Unmarshal([]byte(data), v)
+}
+
 func PrettyJson(jsonBytes []byte) []byte {
 	return pretty.Pretty(jsonBytes)
 }
@@ -46,19 +50,6 @@ func ToMap(v interface{}) (map[string]interface{}, error) {
 		return nil, err
 	}
 	result := make(map[string]interface{})
-	err = Unmarshal(bytes, &result)
-	return result, err
-}
-
-func ToStringMap(v interface{}) (map[string]string, error) {
-	if v == nil {
-		return nil, nil
-	}
-	bytes, err := Marshal(v)
-	if err != nil {
-		return nil, err
-	}
-	result := make(map[string]string)
 	err = Unmarshal(bytes, &result)
 	return result, err
 }
