@@ -166,7 +166,17 @@ func IsNotDigital(str string) bool {
 }
 
 func DefaultIfEmpty(str, defaultStr string) string {
-	return If(IsNotEmpty(str), str, defaultStr)
+	if IsNotEmpty(str) {
+		return str
+	}
+	return defaultStr
+}
+
+func DefaultIfZero(str, defaultStr string) string {
+	if IsZero(str) {
+		return defaultStr
+	}
+	return str
 }
 
 func If(condition bool, ifTrue, ifFalse string) string {

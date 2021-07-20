@@ -75,6 +75,12 @@ func TestDefaultIfEmpty(t *testing.T) {
 	assert.Equal(t, str, DefaultIfEmpty(str, ""))
 }
 
+func TestDefaultIfZero(t *testing.T) {
+	var str = "123"
+	assert.Equal(t, str, DefaultIfZero("0", str))
+	assert.Equal(t, str, DefaultIfZero(str, ""))
+}
+
 func TestIsZero(t *testing.T) {
 	assert.Equal(t, true, IsZero(Empty))
 	assert.Equal(t, true, IsZero("0"))
