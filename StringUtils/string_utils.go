@@ -179,6 +179,13 @@ func DefaultIfZero(str, defaultStr string) string {
 	return str
 }
 
+func DefaultIf(condition func(str string) bool, str, defaultStr string) string {
+	if condition == nil || condition(str) {
+		return defaultStr
+	}
+	return str
+}
+
 func If(condition bool, ifTrue, ifFalse string) string {
 	if condition {
 		return ifTrue
