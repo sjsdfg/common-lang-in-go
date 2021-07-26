@@ -33,6 +33,13 @@ func If(condition bool, ifTrue, ifFalse int64) int64 {
 	return ifFalse
 }
 
+func DefaultIfZero(val, defaultVal int64) int64 {
+	if val == 0 {
+		return defaultVal
+	}
+	return val
+}
+
 func Abs(a int64) int64 {
 	return If(a > 0, a, -a)
 }
