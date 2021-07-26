@@ -193,7 +193,7 @@ func If(condition bool, ifTrue, ifFalse string) string {
 	return ifFalse
 }
 
-// string truncate [starIndex, endIndex)
+// Truncate string truncate [starIndex, endIndex)
 // startIndex min is zero
 // endIndex max is len(str)
 func Truncate(str string, startIndex, endIndex int) string {
@@ -230,7 +230,7 @@ func ToInt64(s string) int64 {
 	return result
 }
 
-// 摘自 https://github.com/thinkeridea/go-extend/blob/main/exstrings/strings.go
+// Reverse 摘自 https://github.com/thinkeridea/go-extend/blob/main/exstrings/strings.go
 // go-extend 追求高性能的 go 拓展库
 func Reverse(s string) string {
 	var start, size, end int
