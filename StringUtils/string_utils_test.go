@@ -7,6 +7,7 @@ import (
 )
 
 func TestIsEmpty(t *testing.T) {
+	assert.Equal(t, true, IsEmpty(""))
 	assert.Equal(t, true, IsEmpty(Empty))
 }
 
