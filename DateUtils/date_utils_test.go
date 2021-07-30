@@ -3,6 +3,8 @@ package DateUtils
 import (
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestGetStartOfDay(t *testing.T) {
@@ -27,4 +29,19 @@ func TestGetStartOfMonth(t *testing.T) {
 
 func TestGetEndOfMonth(t *testing.T) {
 	t.Log(GetEndOfMonth(time.Now()))
+}
+
+func TestGetQuarter(t *testing.T) {
+	assert.Equal(t, 1, GetQuarter(time.Date(2021, 01, 05, 12, 12, 0, 0, time.Local)))
+	assert.Equal(t, 1, GetQuarter(time.Date(2021, 02, 05, 12, 12, 0, 0, time.Local)))
+	assert.Equal(t, 1, GetQuarter(time.Date(2021, 03, 05, 12, 12, 0, 0, time.Local)))
+	assert.Equal(t, 2, GetQuarter(time.Date(2021, 04, 05, 12, 12, 0, 0, time.Local)))
+	assert.Equal(t, 2, GetQuarter(time.Date(2021, 05, 05, 12, 12, 0, 0, time.Local)))
+	assert.Equal(t, 2, GetQuarter(time.Date(2021, 06, 05, 12, 12, 0, 0, time.Local)))
+	assert.Equal(t, 3, GetQuarter(time.Date(2021, 07, 05, 12, 12, 0, 0, time.Local)))
+	assert.Equal(t, 3, GetQuarter(time.Date(2021, 8, 05, 12, 12, 0, 0, time.Local)))
+	assert.Equal(t, 3, GetQuarter(time.Date(2021, 9, 05, 12, 12, 0, 0, time.Local)))
+	assert.Equal(t, 4, GetQuarter(time.Date(2021, 10, 05, 12, 12, 0, 0, time.Local)))
+	assert.Equal(t, 4, GetQuarter(time.Date(2021, 11, 05, 12, 12, 0, 0, time.Local)))
+	assert.Equal(t, 4, GetQuarter(time.Date(2021, 12, 05, 12, 12, 0, 0, time.Local)))
 }

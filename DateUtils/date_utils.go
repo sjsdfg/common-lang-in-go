@@ -57,3 +57,35 @@ func SameDay(day1, day2 time.Time) bool {
 		left.Month() == right.Month() &&
 		left.Day() == right.Day()
 }
+
+func GetQuarter(now time.Time) int {
+	month := now.Month()
+	switch month {
+	case 1, 2, 3:
+		return 1
+	case 4, 5, 6:
+		return 2
+	case 7, 8, 9:
+		return 3
+	case 10, 11, 12:
+		return 4
+	default:
+		return 1
+	}
+}
+
+func GetStartOfQuarter(now time.Time) time.Time {
+	quarter := GetQuarter(now)
+	return time.Date(now.Year(), time.Month(3*quarter-2), 1, 0, 0, 0, 0, now.Location())
+}
+
+func GetEndOfQuarter(now time.Time) time.Time {
+	quarter, day := GetQuarter(now), 30
+	switch quarter {
+	case 1, 4:
+		day = 31
+	case 2, 3:
+		day = 30
+	}
+	return time.Date(now.Year(), time.Month(3*quarter), day, 23, 59, 59, 999999999, now.Location())
+}
