@@ -45,3 +45,41 @@ func TestGetQuarter(t *testing.T) {
 	assert.Equal(t, 4, GetQuarter(time.Date(2021, 11, 05, 12, 12, 0, 0, time.Local)))
 	assert.Equal(t, 4, GetQuarter(time.Date(2021, 12, 05, 12, 12, 0, 0, time.Local)))
 }
+
+func TestGetStartOfQuarter(t *testing.T) {
+	t.Log(GetStartOfQuarter(time.Date(2021, 1, 05, 12, 12, 0, 0, time.Local)))
+	t.Log(GetEndOfQuarter(time.Date(2021, 1, 05, 12, 12, 0, 0, time.Local)))
+
+	t.Log(GetStartOfQuarter(time.Date(2021, 2, 05, 12, 12, 0, 0, time.Local)))
+	t.Log(GetEndOfQuarter(time.Date(2021, 2, 05, 12, 12, 0, 0, time.Local)))
+
+	t.Log(GetStartOfQuarter(time.Date(2021, 3, 05, 12, 12, 0, 0, time.Local)))
+	t.Log(GetEndOfQuarter(time.Date(2021, 3, 05, 12, 12, 0, 0, time.Local)))
+
+	t.Log(GetStartOfQuarter(time.Date(2021, 4, 05, 12, 12, 0, 0, time.Local)))
+	t.Log(GetEndOfQuarter(time.Date(2021, 4, 05, 12, 12, 0, 0, time.Local)))
+
+	t.Log(GetStartOfQuarter(time.Date(2021, 5, 05, 12, 12, 0, 0, time.Local)))
+	t.Log(GetEndOfQuarter(time.Date(2021, 5, 05, 12, 12, 0, 0, time.Local)))
+
+	t.Log(GetStartOfQuarter(time.Date(2021, 6, 05, 12, 12, 0, 0, time.Local)))
+	t.Log(GetEndOfQuarter(time.Date(2021, 6, 05, 12, 12, 0, 0, time.Local)))
+
+	t.Log(GetStartOfQuarter(time.Date(2021, 7, 05, 12, 12, 0, 0, time.Local)))
+	t.Log(GetEndOfQuarter(time.Date(2021, 7, 05, 12, 12, 0, 0, time.Local)))
+
+	t.Log(GetStartOfQuarter(time.Date(2021, 8, 05, 12, 12, 0, 0, time.Local)))
+	t.Log(GetEndOfQuarter(time.Date(2021, 8, 05, 12, 12, 0, 0, time.Local)))
+
+	t.Log(GetStartOfQuarter(time.Date(2021, 9, 05, 12, 12, 0, 0, time.Local)))
+	t.Log(GetEndOfQuarter(time.Date(2021, 9, 05, 12, 12, 0, 0, time.Local)))
+
+	t.Log(GetStartOfQuarter(time.Date(2021, 10, 05, 12, 12, 0, 0, time.Local)))
+	t.Log(GetEndOfQuarter(time.Date(2021, 10, 05, 12, 12, 0, 0, time.Local)))
+
+	t.Log(GetStartOfQuarter(time.Date(2021, 11, 05, 12, 12, 0, 0, time.Local)))
+	t.Log(GetEndOfQuarter(time.Date(2021, 11, 05, 12, 12, 0, 0, time.Local)))
+
+	t.Log(GetStartOfQuarter(time.Date(2021, 12, 05, 12, 12, 0, 0, time.Local)))
+	t.Log(GetEndOfQuarter(time.Date(2021, 12, 05, 12, 12, 0, 0, time.Local)))
+}
