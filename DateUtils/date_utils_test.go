@@ -83,3 +83,11 @@ func TestGetStartOfQuarter(t *testing.T) {
 	t.Log(GetStartOfQuarter(time.Date(2021, 12, 05, 12, 12, 0, 0, time.Local)))
 	t.Log(GetEndOfQuarter(time.Date(2021, 12, 05, 12, 12, 0, 0, time.Local)))
 }
+
+func TestGetStartOfYear(t *testing.T) {
+	t.Log(GetStartOfYear(time.Now()))
+}
+
+func TestGetEndOfYear(t *testing.T) {
+	t.Log(GetEndOfYear(time.Now()))
+}

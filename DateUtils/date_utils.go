@@ -19,7 +19,7 @@ func GetStartOfDay(now time.Time) time.Time {
 }
 
 func GetEndOfDay(now time.Time) time.Time {
-	return time.Date(now.Year(), now.Month(), now.Day(), 23, 59, 59, 0, now.Location())
+	return time.Date(now.Year(), now.Month(), now.Day(), 23, 59, 59, 999999999, now.Location())
 }
 
 func GetStartOfWeek(now time.Time) time.Time {
@@ -42,6 +42,30 @@ func GetEndOfMonth(now time.Time) time.Time {
 	return GetEndOfDay(nextMonth.AddDate(0, 0, -1))
 }
 
+func GetStartOfQuarter(now time.Time) time.Time {
+	quarter := GetQuarter(now)
+	return time.Date(now.Year(), time.Month(3*quarter-2), 1, 0, 0, 0, 0, now.Location())
+}
+
+func GetEndOfQuarter(now time.Time) time.Time {
+	quarter, day := GetQuarter(now), 30
+	switch quarter {
+	case 1, 4:
+		day = 31
+	case 2, 3:
+		day = 30
+	}
+	return time.Date(now.Year(), time.Month(3*quarter), day, 23, 59, 59, 999999999, now.Location())
+}
+
+func GetStartOfYear(now time.Time) time.Time {
+	return time.Date(now.Year(), 1, 1, 0, 0, 0, 0, now.Location())
+}
+
+func GetEndOfYear(now time.Time) time.Time {
+	return time.Date(now.Year(), 12, 31, 23, 59, 59, 999999999, now.Location())
+}
+
 func InRange(now, start, end time.Time) bool {
 	return start.UnixNano() <= now.UnixNano() && now.UnixNano() < end.UnixNano()
 }
@@ -61,20 +85,4 @@ func SameDay(day1, day2 time.Time) bool {
 func GetQuarter(now time.Time) int {
 	month := now.Month()
 	return (int(month) + 2) / 3
-}
-
-func GetStartOfQuarter(now time.Time) time.Time {
-	quarter := GetQuarter(now)
-	return time.Date(now.Year(), time.Month(3*quarter-2), 1, 0, 0, 0, 0, now.Location())
-}
-
-func GetEndOfQuarter(now time.Time) time.Time {
-	quarter, day := GetQuarter(now), 30
-	switch quarter {
-	case 1, 4:
-		day = 31
-	case 2, 3:
-		day = 30
-	}
-	return time.Date(now.Year(), time.Month(3*quarter), day, 23, 59, 59, 999999999, now.Location())
 }
