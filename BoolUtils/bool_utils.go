@@ -49,7 +49,7 @@ func IsFalse(b bool) bool {
 	return !b
 }
 
-func FromString(str string) bool {
+func ValueOf(str string) bool {
 	parseBool, err := strconv.ParseBool(str)
 	if err != nil {
 		return false

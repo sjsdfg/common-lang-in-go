@@ -2,7 +2,7 @@ package Int64Utils
 
 import "strconv"
 
-func FromString(str string) int64 {
+func ValueOf(str string) int64 {
 	result, err := strconv.ParseInt(str, 10, 64)
 	if err != nil {
 		return 0
