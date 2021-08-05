@@ -1,6 +1,9 @@
 package CollectionUtils
 
-import "reflect"
+import (
+	"reflect"
+	"sort"
+)
 
 func IsEmpty(collection interface{}) bool {
 	if collection == nil {
@@ -29,4 +32,8 @@ func ForEach(list interface{}, action func(i int)) {
 	for i := 0; i < value.Len(); i++ {
 		action(i)
 	}
+}
+
+func Sort(list interface{}, less func(i, j int) bool) {
+	sort.SliceStable(list, less)
 }

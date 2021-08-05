@@ -1,9 +1,10 @@
 package CollectionUtils
 
 import (
+	"testing"
+
 	"github.com/sjsdfg/common-lang-in-go/TimeUtils"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestIsEmpty(t *testing.T) {
@@ -85,4 +86,15 @@ func TestForEach(t *testing.T) {
 		array = append(array, students[index])
 	})
 	assert.Equal(t, students, array)
+}
+
+func TestSort(t *testing.T) {
+	unsort := []int{8, 5, 4, 9, 7, 3, 2, 1, 6}
+	sorted := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+
+	Sort(unsort, func(i, j int) bool {
+		return unsort[i] < unsort[j]
+	})
+
+	assert.Equal(t, unsort, sorted)
 }
