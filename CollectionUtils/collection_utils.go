@@ -38,6 +38,8 @@ func Sort(list interface{}, less func(i, j int) bool) {
 	sort.SliceStable(list, less)
 }
 
+// IndexOf find index of list elements
+// if not find, return -1
 func IndexOf(list interface{}, match func(i int) bool) int {
 	if list == nil || match == nil {
 		return -1
