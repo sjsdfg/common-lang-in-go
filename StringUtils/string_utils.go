@@ -53,6 +53,18 @@ func IsAnyNoneEmpty(list ...string) bool {
 	return false
 }
 
+func IsAllNoneEmpty(list ...string) bool {
+	if len(list) <= 0 {
+		return false
+	}
+	for _, s := range list {
+		if IsEmpty(s) {
+			return false
+		}
+	}
+	return true
+}
+
 func IsBlank(str string) bool {
 	return !IsNotBlank(str)
 }
@@ -101,6 +113,18 @@ func IsAllZero(list ...string) bool {
 
 func IsAnyNoneZero(list ...string) bool {
 	return !IsAllZero(list...)
+}
+
+func IsAllNoneZero(list ...string) bool {
+	if len(list) <= 0 {
+		return false
+	}
+	for _, s := range list {
+		if IsZero(s) {
+			return false
+		}
+	}
+	return true
 }
 
 func Equal(str1, str2 string) bool {
