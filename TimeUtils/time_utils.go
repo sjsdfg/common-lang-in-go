@@ -48,3 +48,10 @@ func If(condition bool, ifTrue, ifFalse time.Time) time.Time {
 	}
 	return ifFalse
 }
+
+func DefaultIfZero(val, defaultVal time.Time) time.Time {
+	if val.IsZero() {
+		return defaultVal
+	}
+	return val
+}
