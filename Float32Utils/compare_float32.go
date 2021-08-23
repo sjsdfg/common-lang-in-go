@@ -40,3 +40,14 @@ func Abs(a float32) float32 {
 func Equal(a, b float32) bool {
 	return Abs(a-b) <= 1e-6
 }
+
+// InRange 左开右闭
+// [start, end)
+func InRange(val, start, end float32) bool {
+	return start <= val && val < end
+}
+
+// OutOfRange (-∞, start) || [end, ∞)
+func OutOfRange(val, start, end float32) bool {
+	return !InRange(val, start, end)
+}

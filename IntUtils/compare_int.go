@@ -54,3 +54,14 @@ func Distinct(list ...int) []int {
 	}
 	return result
 }
+
+// InRange 左开右闭
+// [start, end)
+func InRange(val, start, end int) bool {
+	return start <= val && val < end
+}
+
+// OutOfRange (-∞, start) || [end, ∞)
+func OutOfRange(val, start, end int) bool {
+	return !InRange(val, start, end)
+}
