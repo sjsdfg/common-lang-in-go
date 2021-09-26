@@ -16,6 +16,7 @@ func TestDeepCopy(t *testing.T) {
 		RoomId:    "3",
 		LiveId:    "4",
 		LiveState: "5",
+		// CreatedTime: time.Now(), // TODO copier 框架对于 time.Time 复制操作失效
 	}
 
 	dst := new(UserInfo)
@@ -32,6 +33,7 @@ func TestJsonCopy(t *testing.T) {
 		RoomId:    "3",
 		LiveId:    "4",
 		LiveState: "5",
+		// CreatedTime: time.Now(),
 	}
 
 	dst := new(UserInfo)
@@ -64,12 +66,13 @@ func TestJsonCopy2(t *testing.T) {
 }
 
 type UserInfo struct {
-	UserName  string `json:"userName,omitempty"`
-	UserImage string `json:"userImage,omitempty"`
-	RoomId    string `json:"roomId,omitempty"`
-	LiveId    string `json:"liveId,omitempty"`
-	LiveState string `json:"liveState,omitempty"`
-	Time      int64  `json:"time,string,omitempty"`
+	UserName    string    `json:"userName,omitempty"`
+	UserImage   string    `json:"userImage,omitempty"`
+	RoomId      string    `json:"roomId,omitempty"`
+	LiveId      string    `json:"liveId,omitempty"`
+	LiveState   string    `json:"liveState,omitempty"`
+	Time        int64     `json:"time,string,omitempty"`
+	CreatedTime time.Time `json:"createdTime"`
 }
 
 type NestedUserInfo struct {
