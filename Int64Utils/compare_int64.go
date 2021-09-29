@@ -68,3 +68,14 @@ func EqualsAny(val int64, list ...int64) bool {
 	}
 	return false
 }
+
+// InRange 左开右闭
+// [start, end)
+func InRange(val, start, end int64) bool {
+	return start <= val && val < end
+}
+
+// OutOfRange (-∞, start) || [end, ∞)
+func OutOfRange(val, start, end int64) bool {
+	return !InRange(val, start, end)
+}
