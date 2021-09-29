@@ -4,7 +4,7 @@ import (
 	"reflect"
 )
 
-// extract string field from list
+// MapToStringSlice extract string field from list
 func MapToStringSlice(list interface{}, action func(i int) string) []string {
 	if list == nil || action == nil {
 		return []string{}
