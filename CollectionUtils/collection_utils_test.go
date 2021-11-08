@@ -98,3 +98,23 @@ func TestSort(t *testing.T) {
 
 	assert.Equal(t, unsort, sorted)
 }
+
+func TestToString(t *testing.T) {
+	t.Log(ToString([]int{1, 2, 3, 4}))
+	t.Log(ToString([]string{"1", "2", "3", "4"}))
+
+	type ToStringTest struct {
+		A string
+		B int64
+	}
+
+	t.Log(ToString([]ToStringTest{
+		{
+			"1",
+			1,
+		}, {
+			"2",
+			2,
+		},
+	}))
+}
