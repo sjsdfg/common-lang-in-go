@@ -532,19 +532,6 @@ func ToDurationE(i interface{}) (time.Duration, error) {
 	}
 }
 
-type timeArg struct {
-	format string
-}
-
-type TimeOption func(*timeArg)
-
-// TimeFormat sets format to time.Parse.
-func TimeFormat(format string) TimeOption {
-	return func(arg *timeArg) {
-		arg.format = format
-	}
-}
-
 // ToTime casts an interface{} to a time.Time.
 func ToTime(i interface{}, opts ...TimeOption) time.Time {
 	v, _ := ToTimeE(i, opts...)

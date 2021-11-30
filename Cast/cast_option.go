@@ -1,19 +1,14 @@
 package Cast
 
-type TimeCastOption struct {
-	Format string
+type timeArg struct {
+	format string
 }
 
-func (o *TimeCastOption) GetFormat() string {
-	if o == nil {
-		return ""
-	}
-	return o.Format
-}
+type TimeOption func(*timeArg)
 
-func getTimeCastOption(options ...*TimeCastOption) *TimeCastOption {
-	if len(options) <= 0 {
-		return nil
+// TimeFormat sets format to time.Parse.
+func TimeFormat(format string) TimeOption {
+	return func(arg *timeArg) {
+		arg.format = format
 	}
-	return options[0]
 }
