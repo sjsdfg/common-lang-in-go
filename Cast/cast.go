@@ -612,8 +612,34 @@ func ToTimeE(i interface{}, opts ...TimeOption) (time.Time, error) {
 
 // ToStringSlice casts an interface{} to a []string.
 func ToStringSlice(i interface{}) []string {
-	v, _ := ToStringSliceE(i)
-	return v
+	switch v := i.(type) {
+	case nil:
+		return nil
+	case []string:
+		return v
+	case []interface{}:
+		var slice []string
+		for j := 0; j < len(v); j++ {
+			s, err := ToStringE(v[j])
+			if err == nil {
+				slice = append(slice, s)
+			}
+		}
+		return slice
+	}
+
+	switch v := reflect.ValueOf(i); v.Kind() {
+	case reflect.Slice, reflect.Array:
+		var slice []string
+		for j := 0; j < v.Len(); j++ {
+			s, err := ToStringE(v.Index(j).Interface())
+			if err == nil {
+				slice = append(slice, s)
+			}
+		}
+		return slice
+	}
+	return nil
 }
 
 // ToStringSliceE casts an interface{} to a []string.
