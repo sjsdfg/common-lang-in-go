@@ -2,7 +2,7 @@ package Int64Utils
 
 func Max(list ...int64) int64 {
 	if len(list) <= 0 {
-		return MAX
+		return 0
 	}
 	max := list[0]
 	for _, val := range list {
@@ -15,7 +15,7 @@ func Max(list ...int64) int64 {
 
 func Min(list ...int64) int64 {
 	if len(list) <= 0 {
-		return MIN
+		return 0
 	}
 	min := list[0]
 	for _, val := range list {
